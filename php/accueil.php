@@ -389,39 +389,13 @@
       <div class="container my-4">
         <div class="row ">
           <div class="col-lg-12 col-md-6 contact-form-style py-3">
-            <form id="contactForm">
-              <!-- Name input -->
-              <div class="mb-3">
-                <!-- <label class="form-label" for="name">Nom et Prénom</label> -->
-                <input class="form-control" id="name" type="text" placeholder="Nom et Prénom" required>
-              </div>
-              <!-- telephone input -->
-              <div class="mb-3 d-flex">
-                <!-- <label class="form-label" for="téléphone">Téléphone</label> -->
-                <input class="form-control mx-1 " id="téléphone" type="number" placeholder="+33 xxxxxxxx" required>
-              
-              <!-- Email address input -->
-                <input class="form-control mx-1 " id="emailAddress" type="email" placeholder="example@example.com" required>
-              </div>
-          
-              <!-- Message input -->
-              <div class="mb-3">
-                <!-- <label class="form-label" for="message">Message</label> -->
-                <textarea class="form-control" id="message"  placeholder="Message" style="height: 10rem;" required></textarea>
-              </div>
-          
-              <!-- Form submit button -->
-              <div class="d-flex align-items-center justify-content-center">
-                <button class="btn btn-warning btn-lg px-5 text-white " type="submit">Envoyer un message</button>
-              </div>
-            </form>
+          <?php include 'contactform.php'?>
           </div>
         </div>
       </div>
     </div>
 
             <!-- footer  -->
-
             <?php include 'footer.php'?>
             
       </body>

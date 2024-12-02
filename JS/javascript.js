@@ -84,7 +84,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const message = document.getElementById('message').value.trim();
 
     if(name === '' || phone === '' || email === '' || message === ''){
-        alert('tous les chambre sont obligatoire ');
+        alert('Tous les champs sont obligatoires');
         return;
     }
     if (!validateName(name)) {
@@ -92,7 +92,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         return;
     }
     if(!validateEmail(email)){
-        alert('entrez une email valide');
+        alert('Veuillez entrer une adresse email valide.');
         return;
     }
     if (!validatePhone(phone)) {
@@ -104,9 +104,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         return;
     }
 
-    // window.location.href = "phpscript.php";
-    alert('Formulaire soumis avec succès!');
-    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm').submit();
 });
 
 function validateName(name) {
@@ -115,12 +113,12 @@ function validateName(name) {
 }
 
 function validateEmail(email) {
-    const re = /^[a-z0-9.-]+@[a-z0-9.-]{2,}.[a-z]{2,4}$/;
+    const re = /^[a-z0-9.-]+@[a-z0-9.-]{2,}\.[a-z]{2,4}$/;
     return re.test(email);
 }
 
 function validatePhone(phone) {
-    const re = /^0[1-9]([-. ]?[0-9]{2}){4}$/; //  regex for phone number format // 
+    const re = /^0[1-9]([-. ]?[0-9]{2}){4}$/;
     return re.test(phone);
 }
 
@@ -129,25 +127,20 @@ function validateMessage(message) {
     return re.test(message);
 }
 
-function ordersubmit(){
-    alert("Votre commande a été soumise! ");
-    window.location.href = "plats.php";
 
-}
-
-function searchFunction() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-      }
-  }
+// function searchFunction() {
+//     var input, filter, ul, li, a, i, txtValue;
+//     input = document.getElementById("myInput");
+//     filter = input.value.toUpperCase();
+//     ul = document.getElementById("myUL");
+//     li = ul.getElementsByTagName("li");
+//     for (i = 0; i < li.length; i++) {
+//         a = li[i].getElementsByTagName("a")[0];
+//         txtValue = a.textContent || a.innerText;
+//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//             li[i].style.display = "";
+//         } else {
+//             li[i].style.display = "none";
+//         }
+//       }
+//   }

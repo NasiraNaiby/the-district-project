@@ -9,16 +9,16 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="accueil.php" style="text-decoration: underline;">Accueil</a>
+                    <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'accueil.php'){ echo 'active'; } ?>" href="accueil.php" style="color: white;"  >Accueil</a>
                   </li>
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="catégorie.php">Catégorie</a>
+                    <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'catégorie.php'){ echo 'active'; } ?>" href="catégorie.php" style="color: white;" >Catégorie</a>
                   </li>
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="plats.php">Plats</a>
+                    <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'plats.php'){ echo 'active'; } ?>" href="plats.php" style="color: white;" >Plats</a>
                   </li>
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a class="nav-link <?php if(basename($_SERVER['PHP_SELF']) == 'contact.php'){ echo 'active'; } ?>" href="contact.php" style="color: white;" >Contact</a>
                   </li>
                 </ul>
               </div>
