@@ -1,6 +1,6 @@
 <form id="contactForm" action="phpscript.php" method="post">
     <!-- Name input -->
-    <div class="mb-3">
+    <div class="mb-3 d-flex">
         <input class="form-control" name="name" id="name" type="text" placeholder="Nom et Prénom" required>
     </div>
     <!-- Telephone input -->

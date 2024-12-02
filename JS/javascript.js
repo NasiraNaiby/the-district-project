@@ -118,7 +118,7 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    const re = /^0[1-9]([-. ]?[0-9]{2}){4}$/;
+    const re =  /^0[1-9]([-. ]?[0-9]{2}){4}$/;
     return re.test(phone);
 }
 
