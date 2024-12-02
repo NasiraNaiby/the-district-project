@@ -29,7 +29,7 @@
                   Vos <span class="text-warning">Choix</span> 
               </h1>
               </div>
-              </div>
+            </div>
            
            
   <div class="bg pb-3" >

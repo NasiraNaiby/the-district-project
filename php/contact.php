@@ -25,8 +25,8 @@ include 'header.php'?>
             <!-- header starts -->
             <div class="header">
               <!-- <img src="../../src/images_the_district/bg2.jpeg" alt="Background Image"> -->
-              <div class="header-text">
-                <h1 class="text-center fw-bold display-1 m-2 p-5 text-white">
+              <div class="header-text mt-5">
+                <h1 class="text-center fw-bold display-1 m-5 p-5 text-white">
                     Contactez<span class="text-warning">-nous</span> 
               </h1>
               </div>

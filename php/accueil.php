@@ -19,9 +19,7 @@
      <div class="spinner-container">
       <div class="loader"></div>
      </div>
-         <!-- navbar starts -->
-         <header>
-   
+         <!-- navbar starts -->   
           <!-- navbar ends --> 
           
           <div id="carouselheader" class="carousel slide">
@@ -68,7 +66,6 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-        </header>
 
       <!-- The Search  Modal -->
   <div class="modal fade" id="myModal">

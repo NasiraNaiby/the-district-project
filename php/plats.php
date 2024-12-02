@@ -21,13 +21,12 @@
          <!-- navbar starts -->
        
            <!-- navbar ends -->
-        
-           <!-- header titlle  -->
-            
-            <div class="container">
-              <div class="row  p-5 justify-content-center align-items-center text-white">
-                  <h1 class="fw-bold display-3 text-center">Tous Les Plats</h1>
-                </div>
+            <div class="header">
+              <div class="header-text ">
+                <h1 class="text-center fw-bold display-1 m-5 p-5 text-white ">
+                  Tous les plats 
+                </h1>
+              </div>
             </div>
             <div class="offcanvas offcanvas-end test" id="demo">
               <div class="offcanvas-header">

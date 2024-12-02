@@ -1,4 +1,4 @@
- .spinner-container{
+.spinner-container{
   background-color: #000;
   position: fixed;
   left: 0;
@@ -34,8 +34,8 @@
   }
 } 
 
-body{
-  font-family: 'Open Sans', sans-serif;
+body {
+  font-family: 'Roboto', sans-serif;
 }
 @keyframes onScrollAnim {
   from{
@@ -57,20 +57,36 @@ body{
     max-height: 50px; 
     font-weight: bold; 
 }
+.myheader{
+  top: 0;
+  z-index: 9999999;
+}
 #CustomNavbar{
     background-color: rgba(0, 0, 0, 0.8);
     transition: background-color 0.3 ease;
     width: 100%; 
-    z-index: 10; /* Ensures the navbar is on top of the carousel */ 
-    top: 0
+    z-index:9999999; 
+    top: 0  
 }
-.navbar-nav .nav-item .nav-link:active,
+.myheader{
+  margin-top: -100px;
+}
+
+@media(max-width:576){
+  .myheader{
+    z-index: 100000; 
+    top: 0;
+    margin-top: -100px;
+  }
+}
 .navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:active,
 .navbar-nav .nav-item .nav-link:hover {
-  color: #ffc107;
+  color: #ffc107 !important;
   text-decoration: underline;
   transform: scale(1.1);
 }
+
 @media(max-width:576){
     .navbar-nav .nav-item{
         margin-left: 10px;
@@ -388,13 +404,13 @@ footer {
   align-items: center;
 }
 
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .cart-icon-container {
-      order: -1; /* Ensure it appears before the toggle button */
+      order: -1;
       margin-left: 0; 
   }
   #cart-count {
-      left: 28% !important; /* Adjust the position for small screens */
+      left: 28% !important; 
   }
-}
+} */
 
