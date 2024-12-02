@@ -1,7 +1,11 @@
-const spinnerElement  = document.querySelector('.spinner-container');
-setTimeout(()=>{
-    spinnerElement.style.display = 'none';
-}, 3000);
+if (!sessionStorage.getItem('preloaderShown')) { 
+    const spinnerElement = document.querySelector('.spinner-container'); 
+    setTimeout(()=>{ spinnerElement.style.display = 'none'; // Set session storage flag to indicate the preloader has been shown 
+        sessionStorage.setItem('preloaderShown', 'true'); 
+    }, 2000); } 
+    else { // Hide the preloader immediately if it has been shown before 
+        document.querySelector('.spinner-container').style.display = 'none'; 
+    }
 
 $('.carousel-one').owlCarousel({
     loop:true,
@@ -83,31 +87,51 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         alert('tous les chambre sont obligatoire ');
         return;
     }
+    if (!validateName(name)) {
+        alert('Veuillez entrer un nom valide.');
+        return;
+    }
     if(!validateEmail(email)){
-        alert('entere une email valid  ');
+        alert('entrez une email valide');
         return;
     }
     if (!validatePhone(phone)) {
         alert('Veuillez entrer un numéro de téléphone valide.');
         return;
     }
+    if (!validateMessage(message)) {
+        alert('Veuillez entrer un message valide.');
+        return;
+    }
 
-
+    // window.location.href = "phpscript.php";
     alert('Formulaire soumis avec succès!');
     document.getElementById('contactForm').reset();
 });
+
+function validateName(name) {
+    const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
+    return re.test(name);
+}
+
 function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const re = /^[a-z0-9.-]+@[a-z0-9.-]{2,}.[a-z]{2,4}$/;
     return re.test(email);
 }
 
 function validatePhone(phone) {
-    const re = /^\d{10}$/; //  regex for phone number format
+    const re = /^0[1-9]([-. ]?[0-9]{2}){4}$/; //  regex for phone number format // 
     return re.test(phone);
 }
+
+function validateMessage(message) {
+    const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
+    return re.test(message);
+}
+
 function ordersubmit(){
     alert("Votre commande a été soumise! ");
-    window.location.href = "plats.html";
+    window.location.href = "plats.php";
 
 }
 

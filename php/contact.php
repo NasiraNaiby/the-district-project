@@ -1,4 +1,40 @@
-<?php include 'header.php'?>
+<?php 
+if (isset($_POST['name']) && isset($_POST['number']) && isset($_POST['email']) && isset($_POST['message'])) {
+  $pattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
+  if (preg_match($pattern, $_REQUEST['name']) === 1) {
+    $data = $_REQUEST['name'];
+  }
+
+  $pattern = "/^0[1-9]([-. ]?[0-9]{2}){4}$/";
+  if (preg_match($pattern, $_REQUEST['number']) === 1) {
+    $data .= "  " . $_REQUEST['number'];
+  }
+
+
+  $pattern = "/^[a-z0-9.-]+@[a-z0-9.-]{2,}.[a-z]{2,4}$/";
+  if (preg_match($pattern, $_REQUEST['email']) === 1) {
+    $data .= "  " . $_REQUEST['email'];
+  }
+
+
+  $pattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
+  if (preg_match($pattern, $_REQUEST['message']) === 1) {
+    $data .= "  " . $_REQUEST['message'] . "\n";
+  }
+  file_put_contents('contactdata' + $_REQUEST['name'] + '.txt', $data, FILE_APPEND);
+  print_r($data);
+}
+/*
+$data  = $_REQUEST['name'];
+$data .="  ".$_REQUEST['number'];
+$data .=" ".$_REQUEST['email'];
+$data .=" ".$_REQUEST['message']."\n";
+*/
+
+echo "your data" . $data;
+
+
+include 'header.php'?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,32 +122,25 @@
       <div class="container my-4 pb-3">
         <div class="row ">
           <div class="col-lg-12 col-md-6 contact-form-style py-3">
-            <form id="contactForm">
-              <!-- Name input -->
-              <div class="mb-3">
-                <!-- <label class="form-label" for="name">Nom et Prénom</label> -->
-                <input class="form-control" id="name" type="text" placeholder="Nom et Prénom" required>
-              </div>
-              <!-- telephone input -->
-              <div class="mb-3 d-flex">
-                <!-- <label class="form-label" for="téléphone">Téléphone</label> -->
-                <input class="form-control mx-1 " id="téléphone" type="number" placeholder="+33 xxxxxxxx" required>
-              
-              <!-- Email address input -->
-                <input class="form-control mx-1 " id="emailAddress" type="email" placeholder="example@example.com" required>
-              </div>
-          
-              <!-- Message input -->
-              <div class="mb-3">
-                <!-- <label class="form-label" for="message">Message</label> -->
-                <textarea class="form-control" id="message"  placeholder="Message" style="height: 10rem;" required></textarea>
-              </div>
-          
-              <!-- Form submit button -->
-              <div class="d-flex align-items-center justify-content-center">
-                <button class="btn btn-warning btn-lg px-5 text-white " type="submit">Envoyer un message</button>
-              </div>
-            </form>
+          <form id="contactForm"  method="post">
+          <!-- Name input -->
+          <div class="mb-3">
+            <input class="form-control" name="name" id="name" type="text" placeholder="Nom et Prénom" required>
+          </div>
+          <!-- telephone input -->
+          <div class="mb-3 d-flex">
+            <input class="form-control mx-1 " name="number" id="téléphone" type="number" placeholder="+33 xxxxxxxx" required>
+            <input class="form-control mx-1 " name="email" id="emailAddress" type="email" placeholder="example@example.com" required>
+          </div>
+          <!-- Message input -->
+          <div class="mb-3">
+            <textarea class="form-control" name="message" id="message" placeholder="Message" style="height: 10rem;" required></textarea>
+          </div>
+          <!-- Form submit button -->
+          <div class="d-flex align-items-center justify-content-center">
+            <button class="btn btn-warning btn-lg px-5 text-white " type="submit">Envoyer un message</button>
+          </div>
+        </form>
           </div>
         </div>
       </div>
