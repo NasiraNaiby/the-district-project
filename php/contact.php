@@ -1,3 +1,4 @@
+<?php include 'header.php'?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +19,7 @@
     </head>
   <body class="parallax">
       <!-- navbar starts -->
-      <nav class="container navbar navbar-expand-lg navbar-light rounded-5 sticky-top" id="CustomNavbar">
+      <!-- <nav class="container navbar navbar-expand-lg navbar-light rounded-5 sticky-top" id="CustomNavbar">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="../src/logo_transparent.png" id="logo" alt="image1" style="width: 70px;">
@@ -47,7 +48,7 @@
             
           </div>
         </div>
-      </nav>
+      </nav> -->
      
            <!-- navbar ends -->
             <!-- header starts -->
@@ -147,7 +148,7 @@
 
   
           <!-- footer start -->
-            <footer class="footer text-white text-center text-lg-start " >
+            <!-- <footer class="footer text-white text-center text-lg-start " >
               <div class="container p-4">
                 <div class="row justify-content-center">
                   <div class="col-12 d-flex justify-content-center">
@@ -173,7 +174,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <script src="../JS/javascript.js"></script>  
+        <script src="../JS/javascript.js"></script>   -->
+        <?php include 'footer.php'?>
       </body>
 </html>
 

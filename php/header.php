@@ -9,16 +9,16 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="#" style="text-decoration: underline;">Accueil</a>
+                    <a class="nav-link" href="accueil.php" style="text-decoration: underline;">Accueil</a>
                   </li>
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="catégorie.html">Catégorie</a>
+                    <a class="nav-link" href="catégorie.php">Catégorie</a>
                   </li>
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="plats.html">Plats</a>
+                    <a class="nav-link" href="plats.php">Plats</a>
                   </li>
                   <li class="nav-item ms-5">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                   </li>
                 </ul>
               </div>
