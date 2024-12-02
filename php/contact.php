@@ -19,36 +19,7 @@
     </head>
   <body class="parallax">
       <!-- navbar starts -->
-      <!-- <nav class="container navbar navbar-expand-lg navbar-light rounded-5 sticky-top" id="CustomNavbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="../src/logo_transparent.png" id="logo" alt="image1" style="width: 70px;">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item ms-5">
-                <a class="nav-link" href="accueil.html" style="text-decoration: underline;">Accueil</a>
-              </li>
-              <li class="nav-item ms-5">
-                <a class="nav-link" href="catégorie.html">Catégorie</a>
-              </li>
-              <li class="nav-item ms-5">
-                <a class="nav-link" href="plats.html">Plats</a>
-              </li>
-              <li class="nav-item ms-5">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-            </ul>
-            <form style="display: inline" action="plats.html" method="get">
-              <button class="btn-order">Menu</button>
-            </form>
-            
-          </div>
-        </div>
-      </nav> -->
+  
      
            <!-- navbar ends -->
             <!-- header starts -->
@@ -148,33 +119,7 @@
 
   
           <!-- footer start -->
-            <!-- <footer class="footer text-white text-center text-lg-start " >
-              <div class="container p-4">
-                <div class="row justify-content-center">
-                  <div class="col-12 d-flex justify-content-center">
-                    <a href="#" class="mx-4">
-                      <i class="bi bi-facebook" style="font-size: 2rem; color: #3b5998;"></i>
-                    </a>
-                    <a href="#" class="mx-4">
-                      <i class="bi bi-twitter" style="font-size: 2rem; color: #00acee;"></i>
-                    </a>
-                    <a href="#" class="mx-4">
-                      <i class="bi bi-instagram" style="font-size: 2rem; color: #C13584;"></i>
-                    </a>
-                    <a href="#" class="mx-4">
-                      <i class="bi bi-linkedin" style="font-size: 2rem; color: #0e76a8;"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                <p class="text-center text-white">© 2024 District Restaurant</p>
-              </div>
-            </footer> 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <script src="../JS/javascript.js"></script>   -->
+          
         <?php include 'footer.php'?>
       </body>
 </html>
