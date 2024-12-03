@@ -21,126 +21,60 @@
      </div>
          <!-- navbar starts -->   
           <!-- navbar ends --> 
-          
           <div id="carouselheader" class="carousel slide">
-            <div class="carousel-indicators">
+          <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselheader" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselheader" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselheader" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>          
-            <div class="carousel-inner">
+          </div>
+          <div class="carousel-inner">
               <div class="carousel-item active header-c-items">
-                <img src="../src/bgn.jpg" class="d-block w-100 c-image" alt="...">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                  <h1 class="display-4">Bienvenue au District Restaurant</h1>
-                  <div class="input-group justify-content-center mt-3">
-                    <input type="text" class="form-control input-resize" placeholder="Recherché" id="search">
+                  <img src="../src/bgn.jpg" class="d-block w-100 c-image" alt="...">
+                  <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                      <h1 class="display-4">Bienvenue au District Restaurant</h1>
+                      <form action="">
+                          <div class="input-group justify-content-center search-input-group mt-3 ">
+                              <input type="text" class="form-control input-resize" placeholder="Recherché" id="search">
+                              <button type="submit" class="btn btn-secondary btn-sm rounded-right-top-bottom"><i class="bi bi-search"></i></button>
+                          </div>
+                      </form>
                   </div>
-                </div>
               </div>
               <div class="carousel-item header-c-items">
-                <img src="../src/bgnn.jpg" class="d-block w-100 c-image" alt="...">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                  <h1 class="display-4">Bienvenue au District Restaurant</h1>
-                  <div class="input-group justify-content-center mt-3">
-                    <input type="text" class="form-control input-resize" placeholder="Recherché" id="search">
+                  <img src="../src/bgnn.jpg" class="d-block w-100 c-image" alt="...">
+                  <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                      <h1 class="display-4">Bienvenue au District Restaurant</h1>
+                      <form action="">
+                          <div class="input-group justify-content-center search-input-group mt-3">
+                              <input type="text" class="form-control input-resize" placeholder="Recherché" id="search">
+                              <button type="submit" class="btn btn-secondary btn-sm rounded-right-top-bottom"><i class="bi bi-search"></i></button>
+                          </div>
+                      </form>
                   </div>
-                </div>
               </div>
               <div class="carousel-item header-c-items">
-                <img src="../src/bgnnn.jpg" class="d-block w-100 c-image" alt="...">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                  <h1 class="display-4">Bienvenue au District Restaurant</h1>
-                  <div class="input-group justify-content-center mt-3">
-                    <input type="text" class="form-control input-resize" placeholder="Recherché" id="search">
+                  <img src="../src/bgnnn.jpg" class="d-block w-100 c-image" alt="...">
+                  <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                      <h1 class="display-4">Bienvenue au District Restaurant</h1>
+                      <form action="">
+                          <div class="input-group search-input-group justify-content-center  mt-3">
+                              <input type="text" class="form-control input-resize" placeholder="Recherché" id="search">
+                              <button type="submit" class="btn btn-secondary btn-sm rounded-right-top-bottom"><i class="bi bi-search"></i></button>
+                          </div>
+                      </form>
                   </div>
-                </div>
               </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselheader" data-bs-slide="prev">
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselheader" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselheader" data-bs-slide="next">
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselheader" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+          </button>
+  </div>
 
-      <!-- The Search  Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Results</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <ul id="myUL" class="list-unstyled">
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/burger.jpg" class="me-3 rounded float-start" alt="Burger" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Burger</a>
-                            <p class="mb-0">Chicken burger with lettuce, tomato, and cheese.</p>
-                        </div>
-                      </li>
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/pizza.jpg" class="me-3 rounded float-start" alt="Pizza" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Pizza</a>
-                            <p class="mb-0">Delicious pizza with various toppings.</p>
-                        </div>
-                      </li>
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/mexican-tacos-with-beef-tomato-sauce-salsa.jpg" class="me-3 rounded float-start" alt="Tacos" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Tacos</a>
-                            <p class="mb-0">Tasty tacos with beef, cheese, and salsa.</p>
-                        </div>
-                      </li>
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/traditional-mexican-tacos-with-meat-vegetables-isolated-white-background.jpg" class="me-3 rounded float-start" alt="Tacos" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Tacos</a>
-                            <p class="mb-0">Spicy tacos with chicken, guacamole, and jalapeños.</p>
-                        </div>
-                      </li>
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/sea1.webp" class="me-3 rounded float-start" alt="Poissons" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Poissons</a>
-                            <p class="mb-0">Grilled fish with lemon and herbs.</p>
-                        </div>
-                      </li>
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/sea3.jpg" class="me-3 rounded float-start" alt="Poissons" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Poissons</a>
-                            <p class="mb-0">Fried fish with tartar sauce.</p>
-                        </div>
-                      </li>
-                    <li class="d-flex align-items-start mb-3">
-                        <img src="../src/salad1.jpg" class="me-3 rounded float-start" alt="Salades" style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <a href="#" class="h5 d-block">Salades</a>
-                            <p class="mb-0">Fresh garden salad with vinaigrette.</p>
-                        </div>
-                      </li>
-                </ul>
-            </div>
-    
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-    
-            </div>
-        </div>
-    </div>
         
 <div class="bg pb-3 ">
     <!-- categorie cards starts start -->

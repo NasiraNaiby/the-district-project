@@ -59,7 +59,7 @@ body {
 }
 .myheader{
   top: 0;
-  z-index: 9999999;
+  z-index: 1000;
 }
 #CustomNavbar{
     background-color: rgba(0, 0, 0, 0.8);
@@ -93,16 +93,28 @@ body {
     }
 }
 .input-resize {
-  transition:  0.3s ease-in-out;
-  width: 50px;
-  padding: 20px;
+  transition:  0.3s ease-in-out; 
+   width: 30px;
+  /* padding: 20px; */
   background-color:rgba(255, 255, 255, 0.5); ;
   border: 2px solid white;
 }
-
-/* Styles applied when input is clicked */
+.rounded-right-top-bottom { 
+ border-radius: 0 15px 15px 0;
+}
+.search-input-group{
+  display: flex;
+  /* align-items: center; */
+}
 .input-resize:focus {
-  width: 350px; /* Desired width on focus */
+  width: 300px;
+}
+
+@media (max-width: 360px) {
+  .input-resize:focus {
+    width: 150px;
+    background-color: green;
+  }
 }
 
 .nav-link {
@@ -116,8 +128,6 @@ body {
     background-image:  url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); 
    
   }
-
-
   .navbar-logo {
     width: 100px; 
     height: auto; 
@@ -220,17 +230,6 @@ footer {
   transform: translate(-50%, -50%); 
   text-align: center; 
 } 
-.input-resize { 
-  width: 50px; 
-  height: 40px; 
-  border-radius: 25px;  
-  transition: width 0.3s ease;
-  padding: 0 10px; 
-  outline: none; 
-}  
-.input-resize:focus { 
-  width: 300px; /* Larger width when focused */ 
-}
 
 .bossons-items img{
   height: 70px;
@@ -374,12 +373,7 @@ footer {
   height: 380px;
   padding: 80px;
 } 
-.input-resize { 
-  transition: width 0.3s ease; width: 200px; /* Initial width */ 
-} 
-.input-resize:focus { 
-  width: 400px; /* Width when focused */ 
-}
+
 .footer{
   background-color: rgba(0, 0, 0, 0.6);
   transition: background-color 0.3 ease;
