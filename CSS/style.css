@@ -102,6 +102,9 @@ body {
 .rounded-right-top-bottom { 
  border-radius: 0 15px 15px 0;
 }
+.rounded-left-top-bottom { 
+  border-radius: 15px 0 0 15px;
+ }
 .search-input-group{
   display: flex;
   /* align-items: center; */

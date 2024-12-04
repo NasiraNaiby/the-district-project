@@ -1,23 +1,8 @@
-<?php include 'header.php'?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Plats</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="../CSS/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awePrix/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMzEmz5nHS3caZJ53qxR7Iq9D8lUP8dI4wYhoJ" crossorigin="anonymous">
-        <!-- <script src="https://kit.fontawePrix.com/0218ac809d.js" crossorigin="anonymous"></script> -->
-        <script src="https://kit.fontawePrix.com/a076d05399.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-      
-      </head>
-    <body class="parallax">
+<?php 
+$my_title = "Plats"; 
+include 'header.php'
+?>
+
          <!-- navbar starts -->
        
            <!-- navbar ends -->
@@ -152,7 +137,7 @@
                       </div>
                       <div class="card-body" >
                          <p class="card-text">Prix</p> 
-                         <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                         <button class="btn-add-to-cart add-to-cart"  >Ajouter</button>
                       </div>
                   </div>
                   </div>
@@ -163,7 +148,7 @@
                       </div>
                       <div class="card-body" >
                           <p class="card-text">Prix</p> 
-                          <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                          <button class="btn-add-to-cart add-to-cart">Ajouter</button>
                       </div>
                   </div>
                   </div>
@@ -395,5 +380,4 @@
             <!-- footer start -->
            
             <?php include 'footer.php'?>
-</body>
-</html>
+       
