@@ -2,7 +2,6 @@
 $my_title = "Plats"; 
 include 'header.php'
 ?>
-
          <!-- navbar starts -->
        
            <!-- navbar ends -->
@@ -91,7 +90,7 @@ include 'header.php'
                   </div>
                 <div class="card-body" >
                     <span> Mexican taco</span><p class="card-text">10</p>
-                    <button class="btn-add-to-cart add-to-cart " >Ajouter</button>
+                    <button class="btn-add-to-cart add-to-cart" >Ajouter</button>
                   </div>
                 </div>
                 </div>
@@ -114,7 +113,9 @@ include 'header.php'
                       </div>
                       <div class="card-body" >
                           <p class="card-text">Prix</p>
-                          <button class="btn-add-to-cart add-to-cart "    >Ajouter</button> 
+                          <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form> 
                        
                       </div>
                   </div>
@@ -126,7 +127,9 @@ include 'header.php'
                       </div>
                       <div class="card-body" >
                           <p class="card-text">Prix</p> 
-                          <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                          <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                       </div>
                   </div>
                   </div>
@@ -137,7 +140,9 @@ include 'header.php'
                       </div>
                       <div class="card-body" >
                          <p class="card-text">Prix</p> 
-                         <button class="btn-add-to-cart add-to-cart"  >Ajouter</button>
+                         <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                       </div>
                   </div>
                   </div>
@@ -148,7 +153,9 @@ include 'header.php'
                       </div>
                       <div class="card-body" >
                           <p class="card-text">Prix</p> 
-                          <button class="btn-add-to-cart add-to-cart">Ajouter</button>
+                          <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                       </div>
                   </div>
                   </div>
@@ -173,7 +180,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">Prix</p>
-                      <button class="btn-add-to-cart add-to-cart "  >Ajouter</button> 
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form> 
                    
                   </div>
               </div>
@@ -185,7 +194,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">Prix</p> 
-                      <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>
@@ -196,7 +207,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                      <p class="card-text">Prix</p> 
-                     <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                     <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>
@@ -207,7 +220,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">Prix</p> 
-                      <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>
@@ -232,7 +247,9 @@ include 'header.php'
               </div>
               <div class="card-body" >
                   <p class="card-text">Prix</p>
-                  <button class="btn-add-to-cart add-to-cart ">Ajouter</button>  
+                  <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                    </form>  
               </div>
           </div>
           </div>
@@ -243,7 +260,9 @@ include 'header.php'
               </div>
               <div class="card-body" >
                   <p class="card-text">Prix</p> 
-                  <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                  <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                    </form>
               </div>
           </div>
           </div>
@@ -254,7 +273,9 @@ include 'header.php'
               </div>
               <div class="card-body" >
                  <p class="card-text">Prix</p> 
-                 <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                 <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
               </div>
           </div>
           </div>
@@ -265,7 +286,9 @@ include 'header.php'
               </div>
               <div class="card-body" >
                   <p class="card-text">Prix</p> 
-                  <button class="btn-add-to-cart add-to-cart "  >Ajouter</button>
+                  <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
               </div>
           </div>
           </div>
@@ -289,7 +312,9 @@ include 'header.php'
                   </div>
                 <div class="card-body" >
                     <span> Mexican taco</span><p class="card-text">10</p>
-                    <button class="btn-add-to-cart add-to-cart " >Ajouter</button>
+                    <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
                 </div>
               </div>
@@ -301,7 +326,9 @@ include 'header.php'
                 </div>
               <div class="card-body" >
                   <span> Mexican taco</span><p class="card-text">10</p>
-                  <button class="btn-add-to-cart add-to-cart " >Ajouter</button>
+                  <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                 </div>
               </div>
               </div>
@@ -324,7 +351,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">prix</p> 
-                      <button class="btn-add-to-cart add-to-cart " >Ajouter</button>
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>
@@ -335,7 +364,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">prix</p> 
-                      <button class="btn-add-to-cart add-to-cart ">Ajouter</button>
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>
@@ -346,7 +377,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">prix</p> 
-                      <button class="btn-add-to-cart add-to-cart ">Ajouter</button>
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>
@@ -355,9 +388,11 @@ include 'header.php'
                   <div class="menu1-item">
                     <img src="../src/jusorange.jpeg" class="card-img-categori " alt="image">
                   </div>
-                  <div class="card-body" >
+                  <div class="card-body">
                       <p class="card-text">prix</p>
-                      <button class="btn-add-to-cart add-to-cart ">Ajouter</button> 
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form> 
                   </div>
               </div>
               </div>
@@ -368,7 +403,9 @@ include 'header.php'
                   </div>
                   <div class="card-body" >
                       <p class="card-text">prix</p> 
-                      <button class="btn-add-to-cart add-to-cart ">Ajouter</button>
+                      <form method="post">
+                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
+                      </form>
                   </div>
               </div>
               </div>

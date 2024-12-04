@@ -411,3 +411,34 @@ footer {
   }
 } */
 
+/* categorie page nav styles  */
+.nav-tabs .nav-link {
+  margin-right: 5px;
+  border-radius: 5px;
+  color: #0e0c0c;
+}
+.menu-container {
+  margin-top: 20px;
+}
+.nav-bg-bar {
+  padding: 10px;
+  border-radius: 5px;
+  border-top: 3px solid #d4ac0d;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.nav-items{
+  display: inline-block;
+  margin-right: 5px;
+}
+.nav-liks{
+  display: inline-block;
+}
+@media (max-width: 576px) {
+  .nav-bg-bar {
+    padding: 5px;
+  }
+  .nav-link {
+      margin-right: 3px;
+  }
+}
