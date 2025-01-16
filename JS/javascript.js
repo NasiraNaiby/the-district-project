@@ -1,11 +1,11 @@
-if (!sessionStorage.getItem('preloaderShown')) { 
-    const spinnerElement = document.querySelector('.spinner-container'); 
-    setTimeout(()=>{ spinnerElement.style.display = 'none'; // Set session storage flag to indicate the preloader has been shown 
-        sessionStorage.setItem('preloaderShown', 'true'); 
-    }, 3000); } 
-    else { // Hide the preloader immediately if it has been shown before 
-        document.querySelector('.spinner-container').style.display = 'none'; 
-    }
+// if (!sessionStorage.getItem('preloaderShown')) { 
+//     const spinnerElement = document.querySelector('.spinner-container'); 
+//     setTimeout(()=>{ spinnerElement.style.display = 'none'; 
+//         sessionStorage.setItem('preloaderShown', 'true'); 
+//     }, 3000); } 
+   // else { // Hide the preloader immediately if it has been shown before 
+        //document.querySelector('.spinner-container').style.display = 'none'; 
+    //}
 
 $('.carousel-one').owlCarousel({
     loop:true,

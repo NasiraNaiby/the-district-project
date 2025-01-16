@@ -1,4 +1,4 @@
-.spinner-container{
+/* .spinner-container{
   background-color: #000;
   position: fixed;
   left: 0;
@@ -18,7 +18,7 @@
   box-shadow:  0 0 8px #FFC107, 0 0 8px #FFC107 inset;
   animation: 2s loadingAnim  ease-in-out infinite;
 
- }
+ } */
  @keyframes loadingAnim {
   0%{
     transform: rotateX(0) rotateY(0) rotateZ(0);

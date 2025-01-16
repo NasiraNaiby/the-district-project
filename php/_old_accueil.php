@@ -180,7 +180,7 @@ include 'header.php'?>
       <div class="col-lg-6 col-sm-12"> 
           <div class="menu1 rounded-3 shadow-lg text-center text-white"> 
               <h1 class="fs-2 fw-bold m-4">Trouvez Votre Plat Préféré<br>Aujourd'hui !</h1> 
-              <a href="plats.html"><button class="btn btn-lg btn-danger">Explorer le menu</button> </a>
+              <a href="plats.php"><button class="btn btn-lg btn-danger">Explorer le menu</button> </a>
           </div> 
         </div> 
       </div>

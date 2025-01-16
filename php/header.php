@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="../CSS/style.css">
+
+<!--  /home/nasira/Documents/the-district-project/CSS/style.css  -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -53,16 +55,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item ms-5">
-      <a class="nav-link" href="accueil.php" style="color: white;">Accueil</a>
+      <a class="nav-link" href="../accueil.php" style="color: white;">Accueil</a>
       </li>
       <li class="nav-item ms-5">
-      <a class="nav-link" href="catégorie.php" style="color: white;">Catégorie</a>
+      <a class="nav-link" href="../php/catégorie.php" style="color: white;">Catégorie</a>
       </li>
       <li class="nav-item ms-5">
-      <a class="nav-link" href="plats.php" style="color: white;">Plats</a>
+      <a class="nav-link" href="../php/plats.php" style="color: white;">Plats</a>
       </li>
       <li class="nav-item ms-5">
-      <a class="nav-link" href="contact.php" style="color: white;">Contact</a>
+      <a class="nav-link" href="../php/contact.php" style="color: white;">Contact</a>
       </li>
   </ul>
     </div>
