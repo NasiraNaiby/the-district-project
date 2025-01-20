@@ -44,12 +44,10 @@
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#auth1" aria-expanded="false" aria-controls="auth1">
                     <i class="bi bi-shield-check"></i>
-                    <span>Auth</span>
+                    <span>Users</span>
                 </a>
                 <ul class="sidebar-dropdown list-unstyled collapse" id="auth1" data-bs-parent="#sidebar">
                     <li class="sidebar-item"><a href="#" class="sidebar-link">Administrator</a></li>
-                    <li class="sidebar-item"><a href="#" class="sidebar-link">Approvisioner</a></li>
-                    <li class="sidebar-item"><a href="#" class="sidebar-link">Manager</a></li>
                 </ul>
             </li>
             <li class="sidebar-item">

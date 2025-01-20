@@ -5,8 +5,11 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $input_username = $_POST['username'];
     $input_password = $_POST['password'];  
-    $stmt = $pdo->prepare("SELECT username FROM user WHERE username = :username AND password = :password");
+
+    // Fetch user data
+    $stmt = $pdo->prepare("SELECT username, password FROM user WHERE username = :username AND password = :password");
     $stmt->bindParam(':username', $input_username);
+    $stmt->bindParam(':password', $input_password);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -16,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: adminpage.php");
         exit();
     } else {
-        header("Location: login.php?error=invalid");
+        header("Location: index.php?error=invalid");
         exit();
-   }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -42,18 +45,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white mb-5">Veuillez entrer votre identifiant et votre mot de passe!</p>
-                <form method="post" action="login.php">
+                <form method="post" action="index.php">
                         <div data-mdb-input-init class="form-outline form-white mb-4">
-                            <input type="text"  class="form-control form-control-lg" name="username">
+                            <input type="text" class="form-control form-control-lg" name="username">
                         </div>
 
                         <div data-mdb-input-init class="form-outline form-white mb-4">
-                            <input type="password"  class="form-control form-control-lg" name="password">
+                            <input type="password" class="form-control form-control-lg" name="password">
                         </div>
 
                         <p class="small mb-5 pb-lg-2"><a class="text-white" href="#!">Mot de passe oublié?</a></p>
 
-                        <button  class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                 </form>
               </div>
 

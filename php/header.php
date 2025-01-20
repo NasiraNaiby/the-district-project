@@ -19,30 +19,33 @@
     <body class="parallax">
 <div class="sticky-top myheader">
 <div class="container-fluid headerbar bg-dark p-0 sticky-top">
-  <div class="container d-flex justify-content-between align-items-center py-1 ">
-      <div class="">
-          <a href="#" class="mx-2" style="text-decoration: none;">
-              <i class="bi bi-facebook" style="font-size: 15px; color: #3b5998; padding: 0%;"></i>
-          </a>
-          <a href="#" class="mx-2" style="text-decoration: none;">
-              <i class="bi bi-twitter" style="font-size: 15px; color: #00acee; padding: 0%;"></i>
-          </a>
-          <a href="#" class="mx-2" style="text-decoration: none;">
-              <i class="bi bi-instagram" style="font-size: 15px; color: #C13584; padding: 0%;"></i>
-          </a>
-          <a href="#" class="mx-2" style="text-decoration: none;">
-              <i class="bi bi-linkedin" style="font-size: 15px; color: #0e76a8; padding: 0%;"></i>
-          </a>
-        
-      </div>
-
-      <div class="position-relative">
-          <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo"><img src="../src/carts.png" style="padding: 0%; height: 30px; width: 30px;" alt="cart"></a>
-          <span id="cart-count" class="badge bg-danger position-absolute top-0 start-50 translate-middle ms-3 mt-2" style="left: 55% !important;">0</span>
-      </div>
-    
+  <div class="container d-flex justify-content-between align-items-center py-1">
+    <div>
+      <a href="#" class="mx-2" style="text-decoration: none;">
+        <i class="bi bi-facebook" style="font-size: 15px; color: #3b5998; padding: 0%;"></i>
+      </a>
+      <a href="#" class="mx-2" style="text-decoration: none;">
+        <i class="bi bi-twitter" style="font-size: 15px; color: #00acee; padding: 0%;"></i>
+      </a>
+      <a href="#" class="mx-2" style="text-decoration: none;">
+        <i class="bi bi-instagram" style="font-size: 15px; color: #C13584; padding: 0%;"></i>
+      </a>
+      <a href="#" class="mx-2" style="text-decoration: none;">
+        <i class="bi bi-linkedin" style="font-size: 15px; color: #0e76a8; padding: 0%;"></i>
+      </a>
+    </div>
+    <div class="position-relative d-flex align-items-center">
+      <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo"><img src="../src/carts.png" style="padding: 0%; height: 30px; width: 30px;" alt="cart"></a>
+      <span id="cart-count" class="badge bg-danger position-absolute top-0 start-50 translate-middle me-3 mt-2" style="left: 50% !important;">0</span>
+      
+      <!-- Sign-in icon -->
+      <a href="../clients/index.php" class="ms-4" style="text-decoration: none;">
+        <i class="bi bi-person-circle" style=" font-size: 20px;color: #ffffff;"></i>
+      </a>
+    </div>
   </div>
 </div>
+
 <!-- navbar starts -->
 <nav class="container navbar navbar-expand-lg navbar-light rounded-5 sticky-top" id="CustomNavbar">
   <div class="container-fluid">
