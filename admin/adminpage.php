@@ -45,7 +45,7 @@ $user_name = $_SESSION['username'];
                                 echo "<td>" . $row["codePostal"] . "</td>";
                                 echo "<td>" . $row["tel"] . "</td>";
                                 echo "<td>";
-                                echo "<a href='action.php?cliId=" . $row["clId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
+                                echo "<a href='../phpscript/adminaction.php?cliId=" . $row["clId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }

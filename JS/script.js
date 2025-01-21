@@ -18,6 +18,14 @@ document.getElementById("addClientBtn").addEventListener("click", function() {
         form.style.display = "none";
     }
 });
+document.getElementById("editclientProfile").addEventListener("click", function() {
+    var form = document.getElementById("clientProfile");
+    if (form.style.display === "none") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+});
 document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('clientForm').addEventListener('submit', function(event) {
             event.preventDefault();

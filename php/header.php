@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
       </head>
-    <body class="parallax">
+<body class="parallax">
 <div class="sticky-top myheader">
 <div class="container-fluid headerbar bg-dark p-0 sticky-top">
   <div class="container d-flex justify-content-between align-items-center py-1">
