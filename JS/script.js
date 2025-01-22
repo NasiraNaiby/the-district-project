@@ -1,186 +1,98 @@
-const  toggle = document.querySelector("#toggle-button");
-toggle.addEventListener('click', function(){
-    document.querySelector("#sidebar").classList.toggle("expand");
-});
-document.getElementById("addProduct").addEventListener("click", function() {
-    var form = document.getElementById("ProductForm");
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-});
-document.getElementById("addClientBtn").addEventListener("click", function() {
-    var form = document.getElementById("clientForm");
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-});
-document.getElementById("editclientProfile").addEventListener("click", function() {
-    var form = document.getElementById("clientProfile");
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-});
-document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('clientForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const nom = document.getElementById('nom').value.trim();
-            const prenom = document.getElementById('prenom').value.trim();
-            const addresse = document.getElementById('addresse').value.trim();
-            const codePostal = document.getElementById('codePostal').value.trim();
-            const ville = document.getElementById('ville').value.trim();
-            const tel = document.getElementById('tel').value.trim();
-            const mail = document.getElementById('mail').value.trim();
-
-            if (nom === '' || prenom === '' || addresse === '' || codePostal === '' || ville === '' || tel === '' || mail === '') {
-                alert('Tous les champs sont obligatoires');
-                return;
-            }
-            if (!validateNom(nom)) {
-                alert('Veuillez entrer un nom valide.');
-                return;
-            }
-            if (!validatePrenom(prenom)) {
-                alert('Veuillez entrer un prénom valide.');
-                return;
-            }
-            if (!validateAddresse(addresse)) {
-                alert('Veuillez entrer une adresse valide.');
-                return;
-            }
-            if (!validateCodePostal(codePostal)) {
-                alert('Veuillez entrer un code postal valide.');
-                return;
-            }
-            if (!validateVille(ville)) {
-                alert('Veuillez entrer une ville valide.');
-                return;
-            }
-            if (!validateMail(mail)) {
-                alert('Veuillez entrer une adresse mail valide.');
-                return;
-            }
-            if (!validateTel(tel)) {
-                alert('Veuillez entrer un numéro de téléphone valide.');
-                return;
-            }
-
-            this.submit();
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.querySelector("#toggle-button");
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function(){
+            document.querySelector("#sidebar").classList.toggle("expand");
         });
-
-        function validateNom(nom) {
-            const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-            return re.test(nom);
-        }
-
-        function validatePrenom(prenom) {
-            const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-            return re.test(prenom);
-        }
-
-        function validateAddresse(addresse) {
-            const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-            return re.test(addresse);
-        }
-
-        function validateCodePostal(codePostal) {
-            const re = /^[1-9][0-9]{4}$/;
-            return re.test(codePostal);
-        }
-
-        function validateVille(ville) {
-            const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-            return re.test(ville);
-        }
-
-        function validateTel(tel) {
-            const re = /^0[1-9]([-. ]?[0-9]{2}){4}$/;
-            return re.test(tel);
-        }
-
-        function validateMail(mail) {
-            const re = /^[a-z0-9.-]+@[a-z0-9.-]{2,}\.[a-z]{2,4}$/i;
-            return re.test(mail);
-        }
-    });
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('UpdateForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const nom = document.getElementById('nom').value.trim();
-            const prenom = document.getElementById('prenom').value.trim();
-            const addresse = document.getElementById('addresse').value.trim();
-            const codePostal = document.getElementById('codePostal').value.trim();
-            const ville = document.getElementById('ville').value.trim();
-            const tel = document.getElementById('tel').value.trim();
-            const mail = document.getElementById('mail').value.trim();
-
-            if (nom === '' || prenom === '' || addresse === '' || codePostal === '' || ville === '' || tel === '' || mail === '') {
-                alert('Tous les champs sont obligatoires');
-                return;
+    }
+    
+    const addProductButton = document.getElementById("addProduct");
+    if (addProductButton && addClientButton) {
+        addProductButton.addEventListener("click", function () {
+            var form = document.getElementById("ProductForm");
+            if (form) {
+                form.style.display = form.style.display === "none" ? "block" : "none";
             }
-            if (!validateNom(nom)) {
-                alert('Veuillez entrer un nom valide.');
-                return;
-            }
-            if (!validatePrenom(prenom)) {
-                alert('Veuillez entrer un prénom valide.');
-                return;
-            }
-            if (!validateAddresse(addresse)) {
-                alert('Veuillez entrer une adresse valide.');
-                return;
-            }
-            if (!validateCodePostal(codePostal)) {
-                alert('Veuillez entrer un code postal valide.');
-                return;
-            }
-            if (!validateVille(ville)) {
-                alert('Veuillez entrer une ville valide.');
-                return;
-            }
-            if (!validateMail(mail)) {
-                alert('Veuillez entrer une adresse mail valide.');
-                return;
-            }
-            if (!validateTel(tel)) {
-                alert('Veuillez entrer un numéro de téléphone valide.');
-                return;
-            }
-
-            this.submit();
         });
-    function validateNom(nom) {
-        const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-        return re.test(nom);
     }
 
-    function validatePrenom(prenom) {
-        const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-        return re.test(prenom);
+    const addClientButton = document.getElementById("addClientBtn");
+    if (addClientButton) {
+        addClientButton.addEventListener("click", function () {
+            var form = document.getElementById("clientForm");
+            if (form) {
+                form.style.display = form.style.display === "none" ? "block" : "none";
+            }
+        });
     }
 
-    function validateAddresse(addresse) {
+    const editClientProfileButton = document.getElementById("editclientProfile");
+    if (editClientProfileButton) {
+        editClientProfileButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            var form = document.getElementById("clientProfile");
+            if (form) {
+                form.style.display = form.style.display === "none" ? "block" : "none";
+            }
+        });
+    }
+
+    const clientForm = document.getElementById('clientForm');
+    if (clientForm) {
+        clientForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            validateForm(this);
+        });
+    }
+
+    const updateForm = document.getElementById('UpdateForm');
+    if (updateForm) {
+        updateForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            validateForm(this);
+        });
+    }
+
+    function validateForm(form) {
+        const nom = form.querySelector('#nom').value.trim();
+        const prenom = form.querySelector('#prenom').value.trim();
+        const addresse = form.querySelector('#addresse').value.trim();
+        const codePostal = form.querySelector('#codePostal').value.trim();
+        const ville = form.querySelector('#ville').value.trim();
+        const tel = form.querySelector('#tel').value.trim();
+        const mail = form.querySelector('#mail').value.trim();
+
+        if (!nom || !prenom || !addresse || !codePostal || !ville || !tel || !mail) {
+            alert('Tous les champs sont obligatoires');
+            return;
+        }
+
+        const allValidations = [
+            validateText(nom),
+            validateText(prenom),
+            validateText(addresse),
+            validateText(ville),
+            validateCodePostal(codePostal),
+            validateTel(tel),
+            validateMail(mail)
+        ];
+        
+        if (!allValidations.every(Boolean)) {
+            alert('Veuillez vérifier vos informations.');
+            return;
+        }
+
+        form.submit();
+    }
+
+    function validateText(text) {
         const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-        return re.test(addresse);
+        return re.test(text);
     }
 
     function validateCodePostal(codePostal) {
         const re = /^[1-9][0-9]{4}$/;
         return re.test(codePostal);
-    }
-
-    function validateVille(ville) {
-        const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
-        return re.test(ville);
     }
 
     function validateTel(tel) {
@@ -193,9 +105,3 @@ document.addEventListener('DOMContentLoaded', function() {
         return re.test(mail);
     }
 });
-
-
-
-
-
-
