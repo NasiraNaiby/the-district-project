@@ -5,17 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector("#sidebar").classList.toggle("expand");
         });
     }
-    
-    const addProductButton = document.getElementById("addProduct");
-    if (addProductButton && addClientButton) {
-        addProductButton.addEventListener("click", function () {
-            var form = document.getElementById("ProductForm");
-            if (form) {
-                form.style.display = form.style.display === "none" ? "block" : "none";
-            }
-        });
-    }
 
+    // admin user add clients button functionality
     const addClientButton = document.getElementById("addClientBtn");
     if (addClientButton) {
         addClientButton.addEventListener("click", function () {
@@ -26,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // clients profile update link
     const editClientProfileButton = document.getElementById("editclientProfile");
     if (editClientProfileButton) {
         editClientProfileButton.addEventListener("click", function (event) {
@@ -37,6 +29,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // admin add plat button 
+    const addPlatsButton = document.getElementById("addplatBtn");
+    if (addPlatsButton) {
+        addPlatsButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            var form = document.getElementById("addPlatForm");
+            if (form) {
+                form.style.display = form.style.display === "none" ? "block" : "none";
+            }
+        });
+    }
+    
+     // admin add Categorie button 
+     const addcategorieButton = document.getElementById("addcategorieBtn");
+     if (addcategorieButton) {
+         addcategorieButton.addEventListener("click", function (event) {
+             event.preventDefault();
+             var form = document.getElementById("addcategorieForm");
+             if (form) {
+                 form.style.display = form.style.display === "none" ? "block" : "none";
+             }
+         });
+     }
     const clientForm = document.getElementById('clientForm');
     if (clientForm) {
         clientForm.addEventListener('submit', function (event) {

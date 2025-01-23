@@ -34,12 +34,12 @@
                     <span>Tasks</span>
                 </a>
                 <ul class="sidebar-dropdown list-unstyled collapse" id="tasks" data-bs-parent="#sidebar">
+                    <li class="sidebar-item"><a href="#" class="sidebar-link">Plats</a></li>
+                    <li class="sidebar-item"><a href="#" class="sidebar-link">Categories</a></li>
                     <li class="sidebar-item"><a href="#client-section" class="sidebar-link">Clients</a></li>
                     <li class="sidebar-item"><a href="#" class="sidebar-link">Commands</a></li>
-                    <li class="sidebar-item"><a href="produit.php" class="sidebar-link">Products</a></li>
-                    <li class="sidebar-item"><a href="#" class="sidebar-link">Suppliers</a></li>
+                    
                     <li class="sidebar-item"><a href="#" class="sidebar-link">Cart</a></li>
-                    <li class="sidebar-item"><a href="#" class="sidebar-link">Section</a></li>
                 </ul>
             </li>
             <li class="sidebar-item">
