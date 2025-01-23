@@ -14,7 +14,7 @@ if (!isset($_SESSION['client'])) {
 
 $client_email = $_SESSION['email'];
 
-include 'header.php';
+include '../header.php';
 ?>
 <div class="container header">
     <div class="header-text mt-5 pt-4">
@@ -143,4 +143,4 @@ include 'header.php';
 </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include '../footer.php'; ?>
