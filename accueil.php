@@ -1,6 +1,17 @@
 <?php 
+session_start();
+include '../admin/connection.php';
+
+// Check if session is set for the client
+if (isset($_SESSION['client'])) {
+    $client_email = $_SESSION['email'];
+} else {
+    $client_email = "guest";
+}
+
+include 'header.php';
 $my_title = "Accueil"; 
-include 'php/header.php'?>
+?>
 
      <div class="spinner-container">
       <div class="loader"></div>
@@ -18,7 +29,7 @@ include 'php/header.php'?>
                   <img src="/src/bgn.jpg" class="d-block w-100 c-image" alt="...">
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                       <h1 class="display-4">Bienvenue au District Restaurant</h1>
-                      <form action="foodlist.php">
+                      <form action="php/foodlist.php">
                           <div class="input-group justify-content-center search-input-group mt-3 ">
                               <input type="text" class="form-control input-resize rounded-left-top-bottom" placeholder="Recherché" name='user_value' id="search" value="<?php echo isset($_POST['query']) ? htmlspecialchars($_POST['query']) : ''; ?>">
                               <button type="submit" class="btn btn-secondary btn-sm rounded-right-top-bottom"><i class="bi bi-search"></i></button>
@@ -313,7 +324,7 @@ include 'php/header.php'?>
     </div>
 
             <!-- footer  -->
-        <?php include 'php/footer.php'?>
+        <?php include 'footer.php'?>
 
 
 

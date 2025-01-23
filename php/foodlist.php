@@ -1,3 +1,16 @@
+<?php 
+session_start();
+include '../admin/connection.php';
+
+// Check if session is set for the client
+if (isset($_SESSION['client'])) {
+    $client_email = $_SESSION['email'];
+} else {
+    $client_email = "guest";
+}
+
+include '../header.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +55,9 @@
             echo '<ul>';
             foreach ($results as $foodtype => $details) {
                 echo '<li>';
-                echo '<h2>' . htmlspecialchars($details[1]) . '</h2>';
+                echo '<h2 class="text-white">' . htmlspecialchars($details[1]) . '</h2>';
                 echo '<img src="' . htmlspecialchars($details[0]) . '" alt="' . htmlspecialchars($details[1]) . '" width="100px" height="100px">';
-                echo '<p>' . htmlspecialchars($details[2]) . '</p>';
+                echo '<p class="text-white">' . htmlspecialchars($details[2]) . '</p>';
                 echo '</li>';
             }
             echo '</ul>';

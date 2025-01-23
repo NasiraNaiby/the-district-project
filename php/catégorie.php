@@ -1,6 +1,17 @@
 <?php 
+session_start();
+include '../admin/connection.php';
+
+// Check if session is set for the client
+if (isset($_SESSION['client'])) {
+    $client_email = $_SESSION['email'];
+} else {
+    $client_email = "guest";
+}
+
+include '../header.php';
 $my_title = "Catégorie"; 
-include 'header.php'?>
+?>
       <!-- navbar starts -->
            <!-- navbar ends -->
             <!-- header starts -->
@@ -398,7 +409,7 @@ include 'header.php'?>
      </div>
     </div>
 </div>         <!-- footer start -->
-          <?php include 'footer.php'?>
+<?php include '../footer.php'?>
      
 
 

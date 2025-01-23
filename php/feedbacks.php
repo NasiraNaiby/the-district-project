@@ -1,5 +1,17 @@
 <?php 
-//include 'header.php'?>
+session_start();
+include '../admin/connection.php';
+
+// Check if session is set for the client
+if (isset($_SESSION['client'])) {
+    $client_email = $_SESSION['email'];
+} else {
+    $client_email = "guest";
+}
+
+include '../header.php';
+$my_title = "feedbacks"; 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

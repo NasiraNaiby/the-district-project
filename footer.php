@@ -1,4 +1,5 @@
-<footer class="footer text-white text-center text-lg-start" >
+
+<footer class="footer text-white text-center text-lg-start p-4 mt-auto" >
               <div class="container p-4">
                 <div class="row justify-content-center">
                   <div class="col-12 d-flex justify-content-center">
@@ -21,11 +22,14 @@
                 <p class="text-center text-white">© 2024 District Restaurant</p>
               </div>
             </footer>
+            </div>
+            <script>
+            </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <script src="../JS/javascript.js"></script> 
-<!-- /home/nasira/Documents/the-district-project/JS/javascript.js -->
+        <script defer src="/JS/script.js"></script>
+        <script defer src="/JS/javascript.js"></script>
 </body>
 </html>
         
