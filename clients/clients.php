@@ -2,7 +2,7 @@
 session_start();
 include '../admin/connection.php';
 
-// Check if session already exists before starting one
+//Check if session already exists before starting one
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

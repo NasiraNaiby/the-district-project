@@ -41,15 +41,27 @@ $my_title = $display_name ?: 'Default Title'; // Fallback title if user_name is 
                 </a>
             </div>
             <div class="position-relative d-flex align-items-center">
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#cart">
                     <img src="../src/carts.png" style="padding: 0%; height: 30px; width: 30px;" alt="cart">
                 </a>
                 <span id="cart-count" class="badge bg-danger position-absolute top-0 start-50 translate-middle me-3 mt-2" style="left: 30% !important;">0</span>
                 
                 <?php if ($display_name): ?>
-                    <span class="ms-4" style="color: #ffffff;"><?php echo htmlspecialchars($display_name); ?>...</span>
+                    <div class="dropdown ms-4">
+                        <a href="#" class="dropdown-toggle" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
+                            <?php echo htmlspecialchars($display_name); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li class="d-flex justify-content-center py-2">
+                                <img src="../src/userimage/district.png" alt="User Image" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;">
+                            </li>
+                            <li><a class="dropdown-item text-center"><?php echo htmlspecialchars($display_name); ?></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        </ul>
+                    </div>
                 <?php else: ?>
-                    <a href="../clients/index.php" class="ms-4" style="text-decoration: none;">
+                    <a href="index.php" class="ms-4" style="text-decoration: none;">
                         <i class="bi bi-person-circle" style="font-size: 20px; color: #ffffff;"></i>
                     </a>
                 <?php endif; ?>

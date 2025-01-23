@@ -1,14 +1,17 @@
 <?php 
 include '../admin/connection.php';
+
 function validatedData($data) {
     return htmlspecialchars(strip_tags(trim($data)));
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'update') {
     echo "POST request and update action detected.<br>";
     $clId = validatedData($_POST['clId']);
     $fullname = validatedData($_POST['fullname']);
     $email = validatedData($_POST['email']);
     $password = validatedData($_POST['password']);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hashing the password
     $addresse = validatedData($_POST['addresse']);
     $codePostal = validatedData($_POST['codePostal']);
     $tel = validatedData($_POST['tel']);
@@ -31,16 +34,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
         echo "No new photo uploaded.<br>";
         $updatePhoto = false;
     }
+
     try {
         // Construct the SQL statement dynamically based on whether a new photo was uploaded
         if ($updatePhoto) {
             $stmt = $pdo->prepare("UPDATE client SET fullname = ?, email = ?, password = ?, photo = ?, addresse = ?, codePostal = ?, tel = ? WHERE clId = ?");
-            $params = [$fullname, $email, $password, $photoPath, $addresse, $codePostal, $tel, $clId];
+            $params = [$fullname, $email, $hashedPassword, $photoPath, $addresse, $codePostal, $tel, $clId];
         } else {
             $stmt = $pdo->prepare("UPDATE client SET fullname = ?, email = ?, password = ?, addresse = ?, codePostal = ?, tel = ? WHERE clId = ?");
-            $params = [$fullname, $email, $password, $addresse, $codePostal, $tel, $clId];
+            $params = [$fullname, $email, $hashedPassword, $addresse, $codePostal, $tel, $clId];
         }
         echo "Prepared statement.<br>";
+
         if ($stmt->execute($params)) {
             echo "Update successful.<br>";
             header("Location: ../clients/clients.php");
@@ -48,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
         } else {
             echo "Update failed.<br>";
         }
+
         // Verify if changes are reflected
         $checkStmt = $pdo->prepare("SELECT fullname, email, password, photo, addresse, codePostal, tel FROM client WHERE clId = ?");
         $checkStmt->execute([$clId]);
@@ -67,4 +73,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     echo "Invalid request.<br>";
 }
 ?>
-
