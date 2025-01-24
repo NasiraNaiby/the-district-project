@@ -53,42 +53,60 @@ $user_name = $_SESSION['username'];
                 </div>
                 <!--Start of Plats section  -->
                 <div id="plats-section">
-                    <h1 class="text-center mt-3">Plats details</h1>
-                    <table class="table table-hover table-light text-center">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Photo</th>
-                                <th>Plat Categorie</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                            $stmt = $pdo->query('SELECT * FROM plats'); 
-                            while ($row = $stmt->fetch()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["platId"] . "</td>";
-                                echo "<td>" . $row["platName"] . "</td>";
-                                echo "<td>" . $row["platDescription"] . "</td>";
-                                echo "<td>" . $row["platPrice"] . "</td>";
-                                echo "<td>" . $row["platPhoto"] . "</td>";
-                                echo "<td>" . $row["catId"] . "</td>";
-                                echo "<td>";
-                                echo "<a href='edit.php?platId=" . $row["platId"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
-                                echo "<a href='../phpscripts/adminaction.php?platId=" . $row["platId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                        ?>
-                        </tbody>
-                    </table>
-                    <Button class="btn btn-success" id="addplatBtn" >Add a Plat</Button>                    
+                <h1 class="text-center mt-5">Plats details</h1>
+                <table class="table table-hover table-light text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Photo</th>
+                                    <th>Plat Status</th>
+                                    <th>Plat Categorie</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                // Fetch plats data from the database
+                                $stmt = $pdo->query('SELECT
+                                            plats.platId, 
+                                            plats.platName,
+                                            plats.platDescription,
+                                            plats.platPrice,
+                                            plats.platPhoto,
+                                            plats.Active,
+                                            categorie.catName
+                                        FROM 
+                                            plats
+                                        JOIN 
+                                            categorie ON plats.catId = categorie.catId;
+                                        ');
+                                while ($row = $stmt->fetch()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row["platId"] . "</td>";
+                                    echo "<td>" . $row["platName"] . "</td>";
+                                    echo "<td>" . $row["platDescription"] . "</td>";
+                                    echo "<td>" . $row["platPrice"] . "</td>";
+                                    echo "<td>" . $row["platPhoto"] . "</td>";
+                                    echo "<td>" . $row["Active"] . "</td>";
+                                    echo "<td>" . $row["catName"] . "</td>"; 
+                                    echo "<td>";
+                                    echo "<a href='edit.php?platId=" . $row["platId"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
+                                    echo "<a href='../phpscripts/adminaction.php?platId=" . $row["platId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+
+
+                    <Button class="btn btn-success" id="addplatBtn" >Add a Plat</Button>
+
                     <form id="addPlatForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data" style="display: none;">
-                    <input type="hidden" name="action" value="insert">
+                        <input type="hidden" name="action" value="insert">
                         <!-- Other input rows -->
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -108,13 +126,13 @@ $user_name = $_SESSION['username'];
                             <div class="form-group col-md-6">
                                 <label for="catId">Categorie:</label>
                                 <select class="form-control" id="catId" name="catId">
-                                    <option value="1">Tacos</option>
-                                    <option value="2">Burger</option>
-                                    <option value="3">Pizza</option>
-                                    <option value="4">Petit déjeuner</option>
-                                    <option value="5">Seafood</option>
-                                    <option value="6">Salad</option>
-                                    <option value="7">Boissons</option>
+                                    <?php
+                                        // Fetch all categories from the database
+                                        $catStmt = $pdo->query('SELECT * FROM categorie');
+                                        while ($category = $catStmt->fetch()) {
+                                            echo "<option value='" . $category['catId'] . "'>" . $category['catName'] . "</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -126,6 +144,7 @@ $user_name = $_SESSION['username'];
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     </form>
+
                 </div> 
                 <!-- End of plats-section -->
 
@@ -133,31 +152,48 @@ $user_name = $_SESSION['username'];
                 <div id="categorie-section">
                 <h1 class="text-center mt-3">categorie details</h1>
                 <table class="table table-hover table-light text-center">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        $stmt = $pdo->query('SELECT * FROM categorie'); 
-                        while ($row = $stmt->fetch()) {
-                            echo "<tr>";
-                            echo "<td>" . $row["catId"] . "</td>";
-                            echo "<td>" . $row["catName"] . "</td>";
-                            echo "<td>" . $row["catDescription"] . "</td>";
-                            echo "<td>";
-                            echo "<a href='../phpscripts/adminaction.php?catId=" . $row["catId"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
-                            echo "<a href='../phpscripts/adminaction.php?catId=" . $row["catId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
-                            echo "</td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                    </tbody>
-                </table>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Number of Active Plat</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $stmt = $pdo->query('SELECT 
+                                        categorie.catId, -- Added catId
+                                        categorie.catName,
+                                        categorie.catDescription,
+                                        COUNT(plats.platId) AS numberOfActiveDishes
+                                    FROM 
+                                        categorie
+                                    JOIN 
+                                        plats ON categorie.catId = plats.catId
+                                    WHERE 
+                                        plats.active = 1
+                                    GROUP BY 
+                                        categorie.catId, categorie.catName, categorie.catDescription;
+                                    ');
+
+                            while ($row = $stmt->fetch()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["catId"] . "</td>";
+                                echo "<td>" . $row["catName"] . "</td>";
+                                echo "<td>" . $row["catDescription"] . "</td>";
+                                echo "<td>" . $row["numberOfActiveDishes"] . "</td>";  // Fixed here
+                                echo "<td>";
+                                echo "<a href='edit.php?catId=" . $row["catId"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
+                                echo "<a href='../phpscripts/adminaction.php?catId=" . $row["catId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+
                 <Button class="btn btn-success mb-3" id="addcategorieBtn">Add a Categorie</Button>               
                     <form class="mb-5" id="addcategorieForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data" style="display: none;">
                     <input type="hidden" name="action" value="catinsert">   
@@ -176,8 +212,62 @@ $user_name = $_SESSION['username'];
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     </form>
             </div> 
-            <!-- End of categorie-section -->        
-
+            <!-- End of categorie-section --> 
+             
+            <!-- start of order table -->
+            <div id="Command-section ">
+                    <h1 class="text-center mt-3">Détails de la commande</h1>
+                    <table class="table  table-hover table-light text-center  ">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Command Status</th>
+                                <th>Command Date</th>
+                                <th>Client Name</th>
+                                <th>Client Mail</th>
+                                <th>Plat Name</th>
+                                <th>Plat Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $stmt = $pdo->query('SELECT 
+                                        command.comId,
+                                        command.commandDate,
+                                        command.commandStatus,
+                                        client.fullName,
+                                        client.email,
+                                        plats.platName,
+                                        plats.platPrice
+                                    FROM 
+                                        command
+                                    JOIN 
+                                        client ON command.clId = client.clId
+                                    JOIN 
+                                        cart ON command.comId = cart.comId
+                                    JOIN 
+                                        plats ON cart.platId = plats.platId;
+                                    '); 
+                            while ($row = $stmt->fetch()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["comId"] . "</td>";
+                                echo "<td>" . $row["commandDate"] . "</td>";
+                                echo "<td>" . $row["commandStatus"] . "</td>";
+                                echo "<td>" . $row["fullName"] . "</td>";
+                                echo "<td>" . $row["email"] . "</td>";
+                                echo "<td>" . $row["platName"] . "</td>";
+                                echo "<td>" . $row["platPrice"] . "</td>";
+                                echo "<td>";
+                                echo "<a href='../phpscripts/adminaction.php?clId=" . $row["clId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+                 <!-- end of order table -->
             </div>
         </div>
     </div>

@@ -82,6 +82,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
         die("Error: " . $e->getMessage());
     }
 }
+elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'update') {
+    $platId = validatedData($_POST['platId']);
+    $platName = validatedData($_POST['platName']);
+    $platDescription = validatedData($_POST['platDescription']);
+    $platPrice = validatedData($_POST['platPrice']);
+    $catId = validatedData($_POST['catId']);
+    $platPhoto = $_FILES['platPhoto']; // Assuming 'platPhoto' is coming from a form input type="file"
+
+    // Patterns for validation
+    $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
+    $platPricePattern = "/^\d+(\.\d{2})?$/";
+    
+    // Validate form fields
+    try {
+        $platId = validatePattern("/^\d+$/", $platId, 'platId');
+        $platName = validatePattern($textpattern, $platName, 'platName');
+        $platDescription = validatePattern($textpattern, $platDescription, 'platDescription');
+        $platPrice = validatePattern($platPricePattern, $platPrice, 'platPrice');
+        $catId = validatePattern("/^\d+$/", $catId, 'catId');
+
+        // Handle file upload (platPhoto)
+        if ($platPhoto['error'] == UPLOAD_ERR_OK) {
+            // Make sure the file is an image (basic validation)
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!in_array($platPhoto['type'], $allowedTypes)) {
+                throw new Exception('Invalid file type. Only JPEG, PNG, and GIF are allowed.');
+            }
+
+            // Generate a new filename to prevent conflicts
+            $photoName = basename($platPhoto['name']);
+            $uploadDir = '../src/uploads/';
+            $targetPath = $uploadDir . $photoName;
+
+            // Move the file to the server
+            if (!move_uploaded_file($platPhoto['tmp_name'], $targetPath)) {
+                throw new Exception('Failed to upload the photo.');
+            }
+        } else {
+            // If no file was uploaded, keep the old photo (or handle it as necessary)
+            $photoName = ''; // Keep the existing photo or set a default one
+        }
+
+        // Prepare the SQL statement to avoid SQL Injection
+        $stmt = $pdo->prepare("UPDATE plats SET platName = ?, platDescription = ?, platPrice = ?, catId = ?, platPhoto = ? WHERE platId = ?");
+        if ($stmt->execute([ $platName, $platDescription, $platPrice, $catId, $photoName, $platId])) {
+            header("Location: ../admin/adminpage.php");
+            exit();
+        } else {
+            echo "Update failed.";
+        }
+    } catch (PDOException $e) {
+        die("Database error: " . $e->getMessage());
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
 
 
 
@@ -130,92 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
 
 
 
-// function validatedData($data) {
-//     return htmlspecialchars(strip_tags(trim($data)));
-// }
-
-// function validatePattern($pattern, $data, $field) {
-//     if (!preg_match($pattern, $data)) {
-//         die("Invalid $field.");
-//     }
-//     return $data;
-// }
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST['action'] == 'insert')) {
-//     $fullname = validatedData($_POST['fullname']);
-//     $email = validatedData($_POST['email']);
-//     $password = validatedData($_POST['password']);
-//     $photo = validatedData($_POST['photo']);
-//     $addresse = validatedData($_POST['addresse']);
-//     $codePostal = validatedData($_POST['codePostal']);
-//     $tel = validatedData($_POST['tel']);
-   
-
-//     // Patterns for validation
-//     $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
-//     $CPpattern = "/^[1-9][0-9]{4}$/";
-//     $telPattern = "/^0[1-9]([-. ]?[0-9]{2}){4}$/";
-//     $passwordPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/";
-
-//     try {
-//         // Validate each input field
-//         $fullname = validatePattern($textpattern, $fullname, 'fullname');
-//         $email = validatePattern($textpattern, $email, 'email');
-//         $addresse = validatePattern($textpattern, $addresse, 'addresse');
-//         $codePostal = validatePattern($CPpattern, $codePostal, 'codePostal');
-//         $ville = validatePattern($textpattern, $ville, 'ville');
-//         $tel = validatePattern($telPattern, $tel, 'tel');
-//         $password = validatePattern($passwordPattern, $password, 'password');
-
-//         // Prepare the SQL statement to avoid SQL Injection
-//         $stmt = $pdo->prepare("INSERT INTO user ( fullname, email, addresse, cp, ville, tel, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-//         $stmt->execute([ $fullname, $email, $addresse, $codePostal, $ville, $tel, $password]);
-
-//         header("Location: ../admin/adminpage.php");
-//         exit();
-//     } catch (PDOException $e) {
-//         die("Database error: " . $e->getMessage());
-//     }
-//  } 
- //elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'update') {
-//     $clId = validatedData($_POST['clId']);
-//     $fullname = validatedData($_POST['fullname']);
-//     $email = validatedData($_POST['email']);
-//     $addresse = validatedData($_POST['addresse']);
-//     $codePostal = validatedData($_POST['codePostal']);
-//     $ville = validatedData($_POST['ville']);
-//     $tel = validatedData($_POST['tel']);
-//     $password = validatedData($_POST['password']);
-
-//     // Patterns for validation
-//     $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
-//     $CPpattern = "/^[1-9][0-9]{4}$/";
-//     $telPattern = "/^0[1-9]([-. ]?[0-9]{2}){4}$/";
-//     $passwordPattern = "/^[a-z0-9.-]+@[a-z0-9.-]{2,}\.[a-z]{2,4}$/";
-
-//     try {
-//         // Validate each input field
-//         $clId = validatePattern("/^\d+$/", $clId, 'clId');
-//         $fullname = validatePattern($textpattern, $fullname, 'fullname');
-//         $email = validatePattern($textpattern, $email, 'email');
-//         $addresse = validatePattern($textpattern, $addresse, 'addresse');
-//         $codePostal = validatePattern($CPpattern, $codePostal, 'codePostal');
-//         $ville = validatePattern($textpattern, $ville, 'ville');
-//         $tel = validatePattern($telPattern, $tel, 'tel');
-//         $password = validatePattern($passwordPattern, $password, 'password');
-
-//         // Prepare the SQL statement to avoid SQL Injection
-//         $stmt = $pdo->prepare("UPDATE user SET  fullname = ?, email = ?, addresse = ?, cp = ?, ville = ?, tel = ?, password = ? WHERE clId = ?");
-//         if ($stmt->execute([ $fullname, $email, $addresse, $codePostal, $ville, $tel, $password, $clId])) {
-//             header("Location: adminpage.php");
-//             exit();
-//         } else {
-//             echo "Update failed.";
-//         }
-//     } catch (PDOException $e) {
-//         die("Database error: " . $e->getMessage());
-//     }
-// }
+ 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['clId'])) {
     $clId = $_GET['clId']; 
     $pdo->beginTransaction(); 

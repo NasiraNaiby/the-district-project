@@ -44,7 +44,7 @@ $my_title = $display_name ?: 'Default Title'; // Fallback title if user_name is 
                 <a href="#" data-bs-toggle="offcanvas" data-bs-target="#cart">
                     <img src="../src/carts.png" style="padding: 0%; height: 30px; width: 30px;" alt="cart">
                 </a>
-                <span id="cart-count" class="badge bg-danger position-absolute top-0 start-50 translate-middle me-3 mt-2" style="left: 45% !important;">0</span>
+                <span id="cart-count" class="badge bg-danger position-absolute top-0 start-50 translate-middle me-3 mt-2" style="left: 30% !important;">0</span>
                 
                 <?php if ($display_name): ?>
                     <div class="dropdown ms-4">
