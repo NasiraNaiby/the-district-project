@@ -15,6 +15,54 @@ $user_name = $_SESSION['username'];
                 <?php include 'sidebar.php'; ?>
             </div>
             <div class="col-md-9 ">
+            <div id="topplat-section ">
+                    <h1 class="text-center mt-3">Clients details</h1>
+                    <div class="container mt-5">
+                            <h2>Best-Selling Dishes</h2>
+                            <canvas id="PlatsChart"></canvas>
+                        </div>
+
+
+                    <?php
+                        // Prepare the SQL query to get best-selling dishes with total revenue
+                        $sql = "SELECT p.platName, SUM(c.commandPlatQuantity * c.commandPlatPrice) AS totalRevenue 
+                                FROM cart c 
+                                JOIN plats p ON c.platId = p.platId 
+                                GROUP BY p.platName 
+                                ORDER BY totalRevenue DESC;";
+
+                        // Prepare the query
+                        $stmt = $pdo->prepare($sql);
+
+                        // Execute the query
+                        $stmt->execute();
+
+                        // Fetch all the results
+                        $dishes = $stmt->fetchAll();
+
+                        // Prepare the data for Chart.js
+                        $labels = [];
+                        $data = [];
+
+                        foreach ($dishes as $dish) {
+                            // Use 'platName' for the label and 'totalRevenue' for the data
+                            $labels[] = $dish['platName'];
+                            $data[] = $dish['totalRevenue'];
+                        }
+
+                        // Convert PHP arrays to JSON
+                        $labels_json = json_encode($labels);
+                        $data_json = json_encode($data);
+                        ?>
+
+<script>
+                            const labels = <?php echo $labels_json; ?>;
+                            const data = <?php echo $data_json; ?>;
+                            console.log(labels);
+                            console.log(data);
+                        </script>
+                       
+                </div>
                 <div id="client-section ">
                     <h1 class="text-center mt-3">Clients details</h1>
                     <table class="table  table-hover table-light text-center  ">
@@ -140,6 +188,13 @@ $user_name = $_SESSION['username'];
                             <div class="form-group col-md-6">
                                 <label for="photo">Plat Photo:</label>
                                 <input type="file" class="form-control" id="photo" name="photo" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="photo">Plat status:</label>
+                                <select id="Active"  class="form-control" name="Active">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>

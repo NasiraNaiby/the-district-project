@@ -34,6 +34,7 @@
                     <span>Tasks</span>
                 </a>
                 <ul class="sidebar-dropdown list-unstyled collapse" id="tasks" data-bs-parent="#sidebar">
+                <li class="sidebar-item"><a href="#" class="sidebar-link">Top des Plats Rémunérateurs</a></li>
                     <li class="sidebar-item"><a href="#" class="sidebar-link">Plats</a></li>
                     <li class="sidebar-item"><a href="#" class="sidebar-link">Categories</a></li>
                     <li class="sidebar-item"><a href="#client-section" class="sidebar-link">Clients</a></li>

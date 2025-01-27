@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
     $photoFileName = $_FILES['photo']['name'];
     $photoFileTmpName = $_FILES['photo']['tmp_name'];
     $photoFilePath = $uploadDir . basename($photoFileName);
+    $Active = validatedData($_POST['Active']);
 
     // Make sure directory exists
     if (!is_dir($uploadDir)) {
@@ -31,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
 
     // Patterns for validation
     $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
-    $platPricePattern = "/^\d+(\.\d{2})?$/";
+    $platPricePattern = "/^\d+(\.\d{1,2})?$/";
+
 
     try {
         // Validate each input field
@@ -69,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
         }
 
         // Prepare and execute the SQL statement
-        $stmt = $pdo->prepare("INSERT INTO plats (platName, platDescription, platPrice, catId, platPhoto) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$platName, $platDescription, $platPrice, $catId, $photo]);
+        $stmt = $pdo->prepare("INSERT INTO plats (platName, platDescription, platPrice, catId, platPhoto,Active) VALUES (?, ?, ?, ?, ?,?)");
+        $stmt->execute([$platName, $platDescription, $platPrice, $catId, $photo,$Active]);
 
         // Redirect to the admin page after successful insert
         header("Location: ../admin/adminpage.php");
