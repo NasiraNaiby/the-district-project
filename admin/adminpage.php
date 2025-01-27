@@ -55,7 +55,7 @@ $user_name = $_SESSION['username'];
                         $data_json = json_encode($data);
                         ?>
 
-<script>
+                        <script>
                             const labels = <?php echo $labels_json; ?>;
                             const data = <?php echo $data_json; ?>;
                             console.log(labels);
