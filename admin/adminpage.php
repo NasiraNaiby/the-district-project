@@ -219,32 +219,31 @@ $user_name = $_SESSION['username'];
                         <tbody>
                         <?php
                             $stmt = $pdo->query('SELECT 
-                                        categorie.catId, -- Added catId
-                                        categorie.catName,
-                                        categorie.catDescription,
-                                        COUNT(plats.platId) AS numberOfActiveDishes
-                                    FROM 
-                                        categorie
-                                    JOIN 
-                                        plats ON categorie.catId = plats.catId
-                                    WHERE 
-                                        plats.active = 1
-                                    GROUP BY 
-                                        categorie.catId, categorie.catName, categorie.catDescription;
-                                    ');
-
-                            while ($row = $stmt->fetch()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["catId"] . "</td>";
-                                echo "<td>" . $row["catName"] . "</td>";
-                                echo "<td>" . $row["catDescription"] . "</td>";
-                                echo "<td>" . $row["numberOfActiveDishes"] . "</td>";  // Fixed here
-                                echo "<td>";
-                                echo "<a href='edit.php?catId=" . $row["catId"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
-                                echo "<a href='../phpscripts/adminaction.php?catId=" . $row["catId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
+                            categorie.catId, 
+                            categorie.catName,
+                            categorie.catDescription,
+                            COUNT(plats.platId) AS numberOfActiveDishes
+                        FROM 
+                            categorie
+                        LEFT JOIN 
+                            plats ON categorie.catId = plats.catId AND plats.active = 1
+                        GROUP BY 
+                            categorie.catId, categorie.catName, categorie.catDescription
+                        ');
+    
+                        while ($row = $stmt->fetch()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["catId"] . "</td>";
+                            echo "<td>" . $row["catName"] . "</td>";
+                            echo "<td>" . $row["catDescription"] . "</td>";
+                            echo "<td>" . $row["numberOfActiveDishes"] . "</td>";
+                            echo "<td>";
+                            echo "<a href='edit.php?catId=" . $row["catId"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
+                            echo "<a href='../phpscripts/adminaction.php?catId=" . $row["catId"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+    
                         ?>
                         </tbody>
                     </table>

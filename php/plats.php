@@ -12,8 +12,7 @@ if (isset($_SESSION['client'])) {
 include '../header.php';
 $my_title = "Plats"; 
 ?>
-         <!-- navbar starts -->
-       
+      <!-- navbar starts -->
            <!-- navbar ends -->
             <div class="header">
               <div class="header-text ">
@@ -81,29 +80,29 @@ $my_title = "Plats";
               <!-- card 1 --> 
             <div class="container mb-5 pb-3 ">
               <div class="row ">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                  <div class="card border-0 p-0"  >
-                    <div class="menu1-item">
-                      <img src="../src/traditional-mexican-tacos-with-meat-vegetables-isolated-white-background.jpg" class="card-img-categori " alt="image">
-                    </div>
-                  <div class="card-body" >
-                      <span> Mexican taco</span><p class="card-text">10</p>
-                      <button class="btn-add-to-cart add-to-cart " >Ajouter</button>
-                    </div>
-                  </div>
-                </div>
-               <!-- card 2 --> 
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card border-0 p-0"  >
-                  <div class="menu1-item">
-                    <img src="../src/mexican-tacos-with-beef-tomato-sauce-salsa.jpg" class="card-img-categori " alt="image">
-                  </div>
-                <div class="card-body" >
-                    <span> Mexican taco</span><p class="card-text">10</p>
-                    <button class="btn-add-to-cart add-to-cart" >Ajouter</button>
-                  </div>
-                </div>
-                </div>
+              <?php
+              $sql = "SELECT plats.platName, plats.platDescription, plats.platPrice, plats.platPhoto 
+                      FROM plats 
+                      JOIN categorie ON plats.catId = categorie.catId 
+                      WHERE categorie.catName = 'tacos'";
+              $stmt = $pdo->query($sql);
+              
+              echo '<div class="row">';
+              while ($row = $stmt->fetch()) {
+                  echo '<div class="col-lg-3 col-md-6 col-sm-12">';
+                  echo '  <div class="card border-0 p-0">';
+                  echo '    <div class="menu1-item">';
+                  echo '      <img src="../src/uploads/'. $row["platPhoto"] . '" class="card-img-categori " alt="image">';
+                  echo '    </div>';
+                  echo '    <div class="card-body">';
+                  echo '      <span>' . $row["platName"] . '</span><p class="card-text">' . $row["platPrice"] . '</p>';
+                  echo '      <button class="btn-add-to-cart add-to-cart">Ajouter</button>';
+                  echo '    </div>';
+                  echo '  </div>';
+                  echo '</div>';
+              }
+              echo '</div>';
+?>
              </div>
           </div>
               <!-- start of platB -->
@@ -114,64 +113,38 @@ $my_title = "Plats";
                      </h1>
                 </div>
             </div>
-            <div class="container position-relative mb-5 pb-3  ">
+
+      
+            <div class="container position-relative mb-5 pb-3">
               <div class="owl-carousel owl-theme carousel-one">
-                  <div class="item">
-                    <div class="card  border-0 p-0" >
-                      <div class="menu1-item">
-                        <img src="../src/f.jpg" class="card-img-categori " alt="image">
-                      </div>
-                      <div class="card-body" >
-                          <p class="card-text">Prix</p>
-                          <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form> 
-                       
-                      </div>
-                  </div>
-                  </div>
-                  <div class="item">
-                    <div class="card  border-0 p-0" >
-                      <div class="menu1-item">
-                        <img src="../src/buffalo-chicken.webp" class="card-img-categori " alt="image">
-                      </div>
-                      <div class="card-body" >
-                          <p class="card-text">Prix</p> 
-                          <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                      </div>
-                  </div>
-                  </div>
-                  <div class="item">
-                    <div class="card  border-0 p-0" >
-                      <div class="menu1-item">
-                        <img src="../src/pizza.jpg" class="card-img-categori " alt="imagee">
-                      </div>
-                      <div class="card-body" >
-                         <p class="card-text">Prix</p> 
-                         <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                      </div>
-                  </div>
-                  </div>
-                  <div class="item">
-                    <div class="card  border-0 p-0 " >
-                     <div class="menu1-item">
-                        <img src="../src/pizza-salmon.png" class="card-img-categori " alt="image">
-                      </div>
-                      <div class="card-body" >
-                          <p class="card-text">Prix</p> 
-                          <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                      </div>
-                  </div>
-                  </div>
-                  <!-- Repeat for more items -->
-              </div>
+                <?php
+                // SQL query to select plats belonging to burger and pizza categories
+                $sql = "SELECT plats.platName, plats.platDescription, plats.platPrice, plats.platPhoto 
+                        FROM plats 
+                        JOIN categorie ON plats.catId = categorie.catId 
+                        WHERE categorie.catName IN ('burger', 'pizza')";
+                $stmt = $pdo->query($sql);
+
+                if ($stmt) {
+                    while ($row = $stmt->fetch()) {
+                        echo '<div class="item">';
+                        echo '  <div class="card border-0 p-0">';
+                        echo '    <div class="menu1-item">';
+                        echo '      <img src="../src/uploads/' . $row["platPhoto"] . '" class="card-img-categori" alt="image">';
+                        echo '    </div>';
+                        echo '    <div class="card-body">';
+                        echo '      <span>' . $row["platName"] . '</span><p class="card-text">' . $row["platPrice"] . '</p>';
+                        echo '      <button class="btn-add-to-cart add-to-cart">Ajouter</button>';
+                        echo '    </div>';
+                        echo '  </div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "Error: " . $pdo->errorInfo()[2];
+                }
+                ?>
           </div>
+      </div>
            
           <!-- start of platC -->
           <div class="container  p-1" id="seafood">
@@ -183,60 +156,33 @@ $my_title = "Plats";
          </div>
          <div class="container position-relative mb-5 pb-3  ">
           <div class="owl-carousel owl-theme carousel-one">
-              <div class="item">
-                <div class="card  border-0 p-0" >
-                  <div class="menu1-item">
-                    <img src="../src/sea1.webp" class="card-img-categori " alt="image">
-                  </div>
-                  <div class="card-body" >
-                      <p class="card-text">Prix</p>
-                      <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form> 
-                   
-                  </div>
-              </div>
-              </div>
-              <div class="item">
-                <div class="card  border-0 p-0" >
-                  <div class="menu1-item">
-                    <img src="../src/sea2.jpg" class="card-img-categori " alt="image">
-                  </div>
-                  <div class="card-body" >
-                      <p class="card-text">Prix</p> 
-                      <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                  </div>
-              </div>
-              </div>
-              <div class="item">
-                <div class="card  border-0 p-0" >
-                  <div class="menu1-item">
-                    <img src="../src/sea3.jpg" class="card-img-categori " alt="image">
-                  </div>
-                  <div class="card-body" >
-                     <p class="card-text">Prix</p> 
-                     <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                  </div>
-              </div>
-              </div>
-              <div class="item">
-                <div class="card  border-0 p-0 " >
-                  <div class="menu1-item">
-                    <img src="../src/sea4.jpg" class="card-img-categori " alt="image">
-                  </div>
-                  <div class="card-body" >
-                      <p class="card-text">Prix</p> 
-                      <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                  </div>
-              </div>
-              </div>
-              <!-- Repeat for more items -->
+              <?php
+              // SQL query to select plats belonging to seaFood
+              $sql = "SELECT plats.platName, plats.platDescription, plats.platPrice, plats.platPhoto 
+                      FROM plats 
+                      JOIN categorie ON plats.catId = categorie.catId 
+                      WHERE categorie.catName ='sea food'";
+              $stmt = $pdo->query($sql);
+
+              if ($stmt) {
+                  while ($row = $stmt->fetch()) {
+                      echo '<div class="item">';
+                      echo '  <div class="card border-0 p-0">';
+                      echo '    <div class="menu1-item">';
+                      echo '      <img src="../src/uploads/' . $row["platPhoto"] . '" class="card-img-categori" alt="image">';
+                      echo '    </div>';
+                      echo '    <div class="card-body">';
+                      echo '      <span>' . $row["platName"] . '</span><p class="card-text">' . $row["platPrice"] . '</p>';
+                      echo '      <button class="btn-add-to-cart add-to-cart">Ajouter</button>';
+                      echo '    </div>';
+                      echo '  </div>';
+                      echo '</div>';
+                  }
+              } else {
+                  echo "Error: " . $pdo->errorInfo()[2];
+              }
+              ?>
+          
           </div>
       </div>
       
@@ -250,59 +196,33 @@ $my_title = "Plats";
      </div>
      <div class="container position-relative mb-5 pb-3  ">
       <div class="owl-carousel owl-theme carousel-one">
-          <div class="item">
-            <div class="card  border-0 p-0" >
-              <div class="menu1-item">
-                <img src="../src/breakfast1.jpg" class="card-img-categori " alt="image">
-              </div>
-              <div class="card-body" >
-                  <p class="card-text">Prix</p>
-                  <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                    </form>  
-              </div>
-          </div>
-          </div>
-          <div class="item">
-            <div class="card  border-0 p-0" >
-              <div class="menu1-item">
-                <img src="../src/breakfast2.jpg" class="card-img-categori " alt="image">
-              </div>
-              <div class="card-body" >
-                  <p class="card-text">Prix</p> 
-                  <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                    </form>
-              </div>
-          </div>
-          </div>
-          <div class="item">
-            <div class="card  border-0 p-0" >
-              <div class="menu1-item">
-                <img src="../src/breakfast3.jpg" class="card-img-categori " alt="image">
-              </div>
-              <div class="card-body" >
-                 <p class="card-text">Prix</p> 
-                 <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-              </div>
-          </div>
-          </div>
-          <div class="item">
-            <div class="card  border-0 p-0 " >
-              <div class="menu1-item">
-                <img src="../src/breakfast4.jpg" class="card-img-categori " alt="image">
-              </div>
-              <div class="card-body" >
-                  <p class="card-text">Prix</p> 
-                  <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-              </div>
-          </div>
-          </div>
-          <!-- Repeat for more items -->
+            <?php
+            // SQL query to select plats belonging to petit-déjeuner
+            $sql = "SELECT plats.platName, plats.platDescription, plats.platPrice, plats.platPhoto 
+                    FROM plats 
+                    JOIN categorie ON plats.catId = categorie.catId 
+                    WHERE categorie.catName = 'Petit-déjeuner'";
+            $stmt = $pdo->query($sql);
+
+            if ($stmt) {
+                while ($row = $stmt->fetch()) {
+                    echo '<div class="item">';
+                    echo '  <div class="card border-0 p-0">';
+                    echo '    <div class="menu1-item">';
+                    echo '      <img src="../src/uploads/' . $row["platPhoto"] . '" class="card-img-categori" alt="image">';
+                    echo '    </div>';
+                    echo '    <div class="card-body">';
+                    echo '      <span>' . $row["platName"] . '</span><p class="card-text">' . $row["platPrice"] . '</p>';
+                    echo '      <button class="btn-add-to-cart add-to-cart">Ajouter</button>';
+                    echo '    </div>';
+                    echo '  </div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "Error: " . $pdo->errorInfo()[2];
+            }
+            ?>
+
       </div>
   </div>
          <!-- start of salads -->
@@ -315,33 +235,30 @@ $my_title = "Plats";
           </div> 
           <div class="container mb-5 pb-3 ">
             <div class="row ">
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card border-0 p-0"  >
-                  <div class="menu1-item">
-                    <img src="../src/salad2.jpg" class="card-img-categori " alt="image">
-                  </div>
-                <div class="card-body" >
-                    <span> Mexican taco</span><p class="card-text">10</p>
-                    <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                  </div>
-                </div>
-              </div>
-             <!-- card 2 --> 
-            <div class="col-lg-3 col-md-6 col-sm-12">
-              <div class="card  border-0 p-0"  >
-                <div class="menu1-item">
-                  <img src="../src/salad1.jpg" class="card-img-categori " alt="image">
-                </div>
-              <div class="card-body" >
-                  <span> Mexican taco</span><p class="card-text">10</p>
-                  <form method="post">
-                      <button class="btn-add-to-cart add-to-cart" type="submit">Ajouter</button>
-                      </form>
-                </div>
-              </div>
-              </div>
+            <?php
+              $sql = "SELECT plats.platName, plats.platDescription, plats.platPrice, plats.platPhoto 
+                      FROM plats 
+                      JOIN categorie ON plats.catId = categorie.catId 
+                      WHERE categorie.catName = 'Salad'";
+              $stmt = $pdo->query($sql);
+              
+              echo '<div class="row">';
+              while ($row = $stmt->fetch()) {
+                  echo '<div class="col-lg-3 col-md-6 col-sm-12">';
+                  echo '  <div class="card border-0 p-0">';
+                  echo '    <div class="menu1-item">';
+                  echo '      <img src="../src/uploads/'. $row["platPhoto"] . '" class="card-img-categori " alt="image">';
+                  echo '    </div>';
+                  echo '    <div class="card-body">';
+                  echo '      <span>' . $row["platName"] . '</span><p class="card-text">' . $row["platPrice"] . '</p>';
+                  echo '      <button class="btn-add-to-cart add-to-cart">Ajouter</button>';
+                  echo '    </div>';
+                  echo '  </div>';
+                  echo '</div>';
+              }
+              echo '</div>';
+?>
+
            </div>
         </div>
           <!-- start of Boissons --> 

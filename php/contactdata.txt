@@ -3,3 +3,4 @@ Nasira Naeibi,  0123456789,  hannah@email.com,  hannah is a new customer
 Nasira Naeibi,  0123456789,  nasira3795@gmail.com,   very good
 Person,  0123456789,  person@email.com,  here is the text 
 Nasira Naeibi,  0123456789,  nasira3795@gmail.com,  sqsq
+Nasira,  0123456789,  nasira3795@gmail.com,  hello

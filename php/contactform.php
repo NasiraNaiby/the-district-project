@@ -5,7 +5,7 @@
     </div>
     <!-- Telephone input -->
     <div class="mb-3 d-flex">
-        <input class="form-control mx-1" name="number" id="téléphone" type="text" placeholder="+33 xxxxxxxx" required>
+        <input class="form-control mx-1" name="number" id="téléphone" type="tel" placeholder="+33 xxxxxxxx" required>
         <input class="form-control mx-1" name="email" id="emailAddress" type="email" placeholder="example@example.com" required>
     </div>
     <!-- Message input -->

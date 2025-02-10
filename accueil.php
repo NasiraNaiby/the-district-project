@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include '../admin/connection.php';
+include 'admin/connection.php';
 
 // Check if session is set for the client
 if (isset($_SESSION['client'])) {
@@ -205,53 +205,29 @@ $my_title = "Accueil";
    </div> 
 
      <hr>
-     <div class="container-fluid position-relative mb-5 pb-3  ">
-      <div class="owl-carousel owl-theme carousel-three">
-          <div class="item">
-            <div class="card menu1-item border-0 p-0 " >
-              <img src="/src/f.jpg" class="accueilslideshow" style="height: 200px;" class="card-img-top " alt="image">
-              <div class="card-body" >
-                    </div>
-                </div>
-                </div>
-                <div class="item">
-                <div class="card menu1-item border-0 p-0" >
-                  <img src="/src/pizza.jpg" class="accueilslideshow" style="height: 200px;" class="card-img-top " alt="image">
-                  <div class="card-body" >
-                  </div>
-                </div>
-                </div>
-                <div class="item">
-                  <div class="card menu1-item border-0 p-0" >
-                    <img src="/src/f.jpg" class="accueilslideshow" style="height: 200px;" class="card-img-top " alt="image">
-                    <div class="card-body" >
-                    </div>
-                </div>
-                </div>   
-                <div class="item">
-                  <div class="card menu1-item border-0 p-0" >
-                  <img src="/src/sea3.jpg" class="accueilslideshow" style="height: 200px;" class="card-img-top " alt="image">
-                  <div class="card-body" >
-                  </div>
-                </div>
-                </div>
-                <div class="item">
-                  <div class="card menu1-item border-0 p-0" >
-                    <img src="/src/mexican-tacos-with-beef-tomato-sauce-salsa.jpg" class="accueilslideshow" style="height: 200px;" class="card-img-top " alt="image">
-                    <div class="card-body" >
-                    </div>
-                </div>
-                </div>
-                <div class="item">
-                  <div class="card menu1-item border-0 p-0" >
-                    <img src="/src/breakfast4.jpg" class="accueilslideshow" style="height: 200px;" class="card-img-top " alt="image">
-                    <div class="card-body" >
-                    </div>
-                </div>
-                </div>
-                <!-- Repeat for more items -->
-          </div>
-      </div>
+     <div class="container-fluid position-relative mb-5 pb-3">
+    <div class="owl-carousel owl-theme carousel-three">
+        <?php
+        // SQL query to fetch platPhoto from plats table
+        $sql = "SELECT platPhoto FROM plats";
+        $stmt = $pdo->query($sql);
+
+        if ($stmt) {
+            // here it loops all the images from the plats table
+            while ($row = $stmt->fetch()) {
+                echo '<div class="item">';
+                echo '  <div class="card menu1-item border-0 p-0">';
+                echo '    <img src="/src/uploads/' . $row["platPhoto"] . '" class="accueilslideshow" style="height: 200px;" class="card-img-top" alt="image">';
+                echo '    <div class="card-body"></div>';
+                echo '  </div>';
+                echo '</div>';
+            }
+        } else {
+            echo "Error: " . $pdo->errorInfo()[2];
+        }
+        ?>
+    </div>
+</div>
 
 
           
@@ -317,14 +293,32 @@ $my_title = "Accueil";
       <div class="container my-4">
         <div class="row ">
           <div class="col-lg-12 col-md-6 contact-form-style py-3">
-          <?php include 'contactform.php'?>
+          <?php //include 'contactform.php'?>
+          <form id="contactForm" action="../php/phpscript.php" method="post">
+              <!-- Name input -->
+              <div class="mb-3 d-flex">
+                  <input class="form-control" name="name" id="name" type="text" placeholder="Nom et Prénom" required>
+              </div>
+              <!-- Telephone input -->
+              <div class="mb-3 d-flex">
+                  <input class="form-control mx-1" name="number" id="téléphone" type="tel" placeholder="+33 xxxxxxxx" required>
+                  <input class="form-control mx-1" name="email" id="emailAddress" type="email" placeholder="example@example.com" required>
+              </div>
+              <!-- Message input -->
+              <div class="mb-3">
+                  <textarea class="form-control" name="message" id="message" placeholder="Message" style="height: 10rem;" required></textarea>
+              </div>
+              <!-- Form submit button -->
+              <div class="d-flex align-items-center justify-content-center">
+                  <button class="btn btn-warning btn-lg px-5 text-white" type="submit">Envoyer un message</button>
+              </div>
+          </form>
           </div>
         </div>
       </div>
     </div>
-
-            <!-- footer  -->
-        <?php include 'footer.php'?>
+    <!-- footer  -->
+<?php include 'footer.php'?>
 
 
 

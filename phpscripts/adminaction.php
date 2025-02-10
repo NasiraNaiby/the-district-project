@@ -30,10 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
         mkdir($uploadDir, 0777, true);
     }
 
-    // Patterns for validation
-    $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
+    // Updated pattern for validation
+    $textpattern = "/^[\p{L}\p{N}\p{P}\p{Zs}]+$/u";
     $platPricePattern = "/^\d+(\.\d{1,2})?$/";
-
 
     try {
         // Validate each input field
@@ -57,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
         }
 
         // Allow only specific mime types (JPEG, PNG)
-        $allowedMimeTypes = ['image/jpeg', 'image/png'];
+        $allowedMimeTypes = ['image/jpeg', 'image/png',];
         if (!in_array($_FILES['photo']['type'], $allowedMimeTypes)) {
             die("Invalid file type. Only JPG and PNG are allowed.");
         }
@@ -71,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
         }
 
         // Prepare and execute the SQL statement
-        $stmt = $pdo->prepare("INSERT INTO plats (platName, platDescription, platPrice, catId, platPhoto,Active) VALUES (?, ?, ?, ?, ?,?)");
-        $stmt->execute([$platName, $platDescription, $platPrice, $catId, $photo,$Active]);
+        $stmt = $pdo->prepare("INSERT INTO plats (platName, platDescription, platPrice, catId, platPhoto, Active) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$platName, $platDescription, $platPrice, $catId, $photo, $Active]);
 
         // Redirect to the admin page after successful insert
         header("Location: ../admin/adminpage.php");
@@ -84,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
         die("Error: " . $e->getMessage());
     }
 }
+
 elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'update') {
     $platId = validatedData($_POST['platId']);
     $platName = validatedData($_POST['platName']);
@@ -93,7 +93,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POS
     $platPhoto = $_FILES['platPhoto']; // Assuming 'platPhoto' is coming from a form input type="file"
 
     // Patterns for validation
-    $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
+    $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'!]+$/";
     $platPricePattern = "/^\d+(\.\d{2})?$/";
     
     // Validate form fields
@@ -162,7 +162,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
     $catDescription = validatedcatData($_POST['catDescription']);
     
     // Patterns for validation (make sure they are for category fields)
-    $textcatpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/";
+    $textcatpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'!]+$/";
+
 
     try {
         // Validate each category input field

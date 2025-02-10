@@ -28,5 +28,5 @@ if (preg_match($pattern, $_REQUEST['message']) === 1){
 }
 
 file_put_contents('contactdata.txt', $data, FILE_APPEND);
-header('Location: accueil.php');
+header('Location: ../accueil.php');
 ?>

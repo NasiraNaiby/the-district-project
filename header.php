@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $user_name = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 $display_name = $user_name ? substr($user_name, 0, 6) : '';
-$my_title = $display_name ?: 'Default Title'; // Fallback title if user_name is not set
+$my_title = $my_title ?: 'The district'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,13 +52,13 @@ $my_title = $display_name ?: 'Default Title'; // Fallback title if user_name is 
                             <?php echo htmlspecialchars($display_name); ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li class="d-flex justify-content-center py-2">
-                                <img src="../src/userimage/district.png" alt="User Image" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;">
+                            <li class="d-flex justify-content-center py-2 ">
+                                <img src="../src/userimage/district.png" alt="User Image" class="img-thumbnail rounded-circle " style="width: 60px; height: 50px;">
                             </li>
                             <li><a class="dropdown-item text-center"><?php echo htmlspecialchars($display_name); ?></a></li>
                             <li><a  href="../clients/clients.php"    class="dropdown-item text-center">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="/clients/logout.php">Logout</a></li>
                         </ul>
                     </div>
                 <?php else: ?>
