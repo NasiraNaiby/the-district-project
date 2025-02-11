@@ -248,7 +248,7 @@ $user_name = $_SESSION['username'];
                         </tbody>
                     </table>
 
-                <Button class="btn btn-success mb-3" id="addcategorieBtn">Add a Categorie</Button>               
+                   <Button class="btn btn-success mb-3" id="addcategorieBtn">Add a Categorie</Button>               
                     <form class="mb-5" id="addcategorieForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data" style="display: none;">
                     <input type="hidden" name="action" value="catinsert">   
                         <input type="hidden" name="catId" >
@@ -320,9 +320,70 @@ $user_name = $_SESSION['username'];
                         ?>
                         </tbody>
                     </table>
-                </div>
-                 <!-- end of order table -->
             </div>
+                 <!-- end of order table -->
+
+                 <!-- start of boissons tables -->
+                 <div id="boissons-section ">
+                    <h1 class="text-center mt-3">Boissons </h1>
+                    <table class="table  table-hover table-light text-center  ">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name </th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            $stmt = $pdo->query('SELECT * from boissons '); 
+                            while ($row = $stmt->fetch()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["id"] . "</td>";
+                                echo "<td>" . $row["name"] . "</td>";
+                                echo "<td>" . $row["image"] . "</td>";
+                                echo "<td>" . $row["price"] . "</td>";
+                                echo "<td>" . $row["description"] . "</td>";
+                                echo "<td>";
+                                echo "<a href='edit.php?id=" . $row["id"] . "' class='btn btn-warning text-white text-decoration-none ms-2'><i class='bi bi-pencil'></i></a>";
+                                echo "<a href='../phpscripts/adminaction.php?id=" . $row["id"] . "' class='btn btn-danger text-white text-decoration-none ms-2'><i class='bi bi-trash'></i></a>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                    <Button class="btn btn-success mb-3" id="addBoissonsBtn">Add Boisson</Button>               
+                    <form class="mb-5" id="addBoissonsForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data" >
+                        <input type="hidden" name="action" value="boissonsinsert">   
+                        <input type="hidden" name="id">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Nom de la Boisson:</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="photo">Plat Photo:</label>
+                                <input type="file" class="form-control" id="photo" name="photo">
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="price">Prix de la boisson:</label>
+                                <input type="text" class="form-control" id="price" name="price">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="description">Description de la boisson:</label>
+                                <input type="text" class="form-control" id="description" name="description">
+                            </div>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div> 
         </div>
     </div>
 </div>

@@ -101,6 +101,22 @@ document.addEventListener('DOMContentLoaded', function () {
              }
          });
      }
+
+    //  add boissons button
+    document.addEventListener("DOMContentLoaded", function () {
+        var addBoissonsBtn = document.getElementById("addBoissonsBtn");
+        var form = document.getElementById("addBoissonsForm");
+        
+        if (addBoissonsBtn && form) {
+            addBoissonsBtn.addEventListener("click", function (event) {
+                event.preventDefault();
+                form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+            });
+        }
+    });
+    
+    
+
     const clientForm = document.getElementById('clientForm');
     if (clientForm) {
         clientForm.addEventListener('submit', function (event) {

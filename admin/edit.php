@@ -94,32 +94,83 @@ $user_name = $_SESSION['username'];
     <!--Start of categorie section  -->
     <div id="categorie-section">
 
+<?php
+    // Check if catId is passed in the URL
+    if (isset($_GET['catId'])) {
+        $catId = $_GET['catId']; // Get catId from the URL
+
+        $stmt = $pdo->prepare("SELECT * FROM categorie WHERE catId = ?");
+        $stmt->execute([$catId]);
+        $category = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($category) {
+            // Fetch category details
+            $catId = $category['catId'];
+            $catName = $category['catName'];
+            $catDescription = $category['catDescription'];
+?>
+            <form class="mb-5" id="addcategorieForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="catinsert">
+                <input type="hidden" name="catId" value="<?php echo $catId; ?>"> 
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="catName">Nom de la catégorie:</label>
+                        <input type="text" class="form-control" id="catName" name="catName" value="<?php echo htmlspecialchars($catName); ?>" >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="catDescription">Description de la catégorie:</label>
+                        <input type="text" class="form-control" id="catDescription" name="catDescription" value="<?php echo htmlspecialchars($catDescription); ?>" >
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+<?php
+        }
+    }
+?>
+</div> 
+   <!-- End of categorie-section --> 
+
+    <!-- start of boissons-section -->
+    <div id="boissons-section">
     <?php
-        // Check if catId is passed in the URL
-        if (isset($_GET['catId'])) {
-            $catId = $_GET['catId']; // Get catId from the URL
+        if (isset($_GET['id'])) {
+            $id = $_GET['id']; 
 
-            $stmt = $pdo->prepare("SELECT * FROM categorie WHERE catId = ?");
-            $stmt->execute([$catId]);
-            $category = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt = $pdo->prepare("SELECT * FROM boissons WHERE id = ?");
+            $stmt->execute([$id]);
+            $boissons = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($category) {
-                // Fetch category details
-                $catId = $category['catId'];
-                $catName = $category['catName'];
-                $catDescription = $category['catDescription'];
+            if ($boissons) {
+                // Fetch boissons details
+                $id = $boissons['id'];
+                $name = $boissons['name'];
+                $description = $boissons['description'];
+                $price = $boissons['price'];
+                $photo = $boissons['image'];
     ?>
-                <form class="mb-5" id="addcategorieForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data">
-                    <input type="hidden" name="action" value="catinsert">
-                    <input type="hidden" name="catId" value="<?php echo $catId; ?>"> <!-- Fix here -->
+                <form class="mb-5" id="updateBoissonsForm" method="POST" action="../phpscripts/adminaction.php" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="updateBoissons">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>"> 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="catName">Nom de la catégorie:</label>
-                            <input type="text" class="form-control" id="catName" name="catName" value="<?php echo htmlspecialchars($catName); ?>" >
+                            <label for="name">Nom de la Boisson:</label>
+                            <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($name); ?>">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="catDescription">Description de la catégorie:</label>
-                            <input type="text" class="form-control" id="catDescription" name="catDescription" value="<?php echo htmlspecialchars($catDescription); ?>" >
+                            <label for="description">Description de la Boisson:</label>
+                            <input type="text" class="form-control" id="description" name="description" value="<?php echo htmlspecialchars($description); ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="photo">Plat Photo:</label>
+                            <input type="file" class="form-control" id="photo" name="photo">
+                            <span class="text-muted" style="text-decoration-underline"><?php echo htmlspecialchars($photo ? $photo : ''); ?></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="prix">Prix de la boisson:</label>
+                            <input type="number" class="form-control" id="prix" name="prix" value="<?php echo htmlspecialchars($price); ?>">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -128,9 +179,9 @@ $user_name = $_SESSION['username'];
             }
         }
     ?>
-    </div> 
-    <!-- End of categorie-section --> 
+</div>
 
+   
     <?php
     }
     ?>
