@@ -25,12 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST[
     $photoFilePath = $uploadDir . basename($photoFileName);
     $Active = validatedData($_POST['Active']);
 
-    // Make sure directory exists
+    //this one  (if stmts) make sure directory exists
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0777, true);
     }
 
-    // Updated pattern for validation
+    //  pattern for validation
     $textpattern = "/^[\p{L}\p{N}\p{P}\p{Zs}]+$/u";
     $platPricePattern = "/^\d+(\.\d{1,2})?$/";
 
@@ -90,7 +90,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POS
     $platDescription = validatedData($_POST['platDescription']);
     $platPrice = validatedData($_POST['platPrice']);
     $catId = validatedData($_POST['catId']);
-    $platPhoto = $_FILES['platPhoto']; // Assuming 'platPhoto' is coming from a form input type="file"
+    $platPhoto = $_FILES['platPhoto']; 
 
     // Patterns for validation
     $textpattern = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'!]+$/";
